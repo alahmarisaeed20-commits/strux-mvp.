@@ -18,7 +18,12 @@ export function Brand({ compact = false }: { compact?: boolean }) {
       <StruxGlyph size={32} />
       {!compact && (
         <div className="leading-tight">
-          <div className="text-base font-extrabold tracking-tight text-silver-100">STRUX</div>
+          <div className="flex items-center gap-1.5">
+            <span className="text-base font-extrabold tracking-tight text-silver-100">STRUX</span>
+            <span className="rounded bg-gradient-to-r from-electric-500 to-cyan-400 px-1 py-px text-[9px] font-black leading-none text-white">
+              AI
+            </span>
+          </div>
           <div className="text-[10px] font-medium uppercase tracking-[0.18em] text-electric-300">
             {t('brand.tagline')}
           </div>

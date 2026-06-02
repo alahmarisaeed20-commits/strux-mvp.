@@ -233,6 +233,96 @@ export const dict: Dict = {
 
   // Language switch
   'lang.toggle': { en: 'العربية', ar: 'English' },
+
+  // ---- Landing page ----
+  'land.navProduct': { en: 'Product', ar: 'المنتج' },
+  'land.navModules': { en: 'Modules', ar: 'الوحدات' },
+  'land.navVision': { en: 'Vision 2030', ar: 'رؤية 2030' },
+  'land.navInvestors': { en: 'Investors', ar: 'المستثمرون' },
+  'land.signin': { en: 'Sign in', ar: 'تسجيل الدخول' },
+  'land.launch': { en: 'Launch Demo', ar: 'تشغيل العرض' },
+  'land.heroBadge': { en: 'Backed for the Saudi Vision 2030 construction boom', ar: 'مدعومة لطفرة الإنشاءات ضمن رؤية السعودية 2030' },
+  'land.heroTitle1': { en: 'The AI Operating Layer for', ar: 'طبقة التشغيل الذكية لـ' },
+  'land.heroTitle2': { en: 'Engineering & Construction', ar: 'الهندسة والإنشاءات' },
+  'land.heroDesc': {
+    en: 'STRUX turns your BIM models, IFC/Revit files, BOQs and specifications into decisions — automated QA/QC, clash intelligence, Saudi compliance, quantity take-off and executive reporting. It augments Autodesk, Revit and Navisworks; it never replaces them.',
+    ar: 'تحوّل STRUX نماذج BIM وملفات IFC/Revit وجداول الكميات والمواصفات إلى قرارات — ضبط جودة آلي، وذكاء تعارضات، وامتثال سعودي، وحصر كميات، وتقارير تنفيذية. تعزّز Autodesk وRevit وNavisworks ولا تستبدلها أبدًا.',
+  },
+  'land.ctaPrimary': { en: 'Launch Live Demo', ar: 'تشغيل العرض المباشر' },
+  'land.ctaSecondary': { en: 'For Investors', ar: 'للمستثمرين' },
+  'land.trusted': { en: 'Built for the Kingdom’s largest developers & giga-projects', ar: 'مصمم لأكبر المطورين والمشاريع العملاقة في المملكة' },
+  'land.statProjects': { en: 'Projects analysed', ar: 'مشاريع تم تحليلها' },
+  'land.statElements': { en: 'BIM elements processed', ar: 'عناصر BIM تمت معالجتها' },
+  'land.statSaved': { en: 'Rework cost avoided', ar: 'تكلفة إعادة عمل تم تفاديها' },
+  'land.statCompliance': { en: 'Avg compliance lift', ar: 'متوسط تحسّن الامتثال' },
+  'land.featuresTitle': { en: 'One intelligence layer. Seven decisions.', ar: 'طبقة ذكاء واحدة. سبعة قرارات.' },
+  'land.featuresSub': { en: 'Everything a contractor, consultant, BIM manager or owner needs to de-risk a project.', ar: 'كل ما يحتاجه المقاول والاستشاري ومدير BIM والمالك لتقليل مخاطر المشروع.' },
+  'land.howTitle': { en: 'From model to decision in minutes', ar: 'من النموذج إلى القرار في دقائق' },
+  'land.howSub': { en: 'Upload once — STRUX AI does the rest.', ar: 'ارفع مرة واحدة — ويتولى STRUX AI الباقي.' },
+  'land.showcaseTitle': { en: 'See the platform in action', ar: 'شاهد المنصة أثناء العمل' },
+  'land.investorTitle': { en: 'A category-defining company for a $0.8T market', ar: 'شركة تصنع فئة جديدة في سوق بقيمة 0.8 تريليون دولار' },
+  'land.investorSub': { en: 'Saudi Arabia is delivering the largest construction pipeline on earth. STRUX is the intelligence layer on top of all of it.', ar: 'تنفّذ السعودية أكبر محفظة إنشاءات في العالم. وSTRUX هي طبقة الذكاء فوقها بالكامل.' },
+  'land.investorCta': { en: 'Open Investor Mode', ar: 'فتح وضع المستثمر' },
+  'land.finalTitle': { en: 'Ready to see your portfolio through an AI lens?', ar: 'مستعد لرؤية محفظتك بعدسة الذكاء الاصطناعي؟' },
+  'land.finalSub': { en: 'Explore the full interactive demo — no signup required.', ar: 'استكشف العرض التفاعلي الكامل — دون الحاجة للتسجيل.' },
+  'land.footerTagline': { en: 'The AI Operating Layer for Engineering & Construction.', ar: 'طبقة التشغيل الذكية للهندسة والإنشاءات.' },
+  'land.footerRights': { en: 'STRUX AI · Prototype. Illustrative data. Hosted in the Kingdom of Saudi Arabia.', ar: 'STRUX AI · نموذج أولي. بيانات توضيحية. مستضاف في المملكة العربية السعودية.' },
+
+  // ---- Vision 2030 ----
+  'v2030.tag': { en: 'Aligned with Saudi Vision 2030', ar: 'متوافقة مع رؤية السعودية 2030' },
+  'v2030.title': { en: 'Powering the giga-projects of Vision 2030', ar: 'نُمكّن المشاريع العملاقة لرؤية 2030' },
+  'v2030.desc': {
+    en: 'Vision 2030 is mobilising over SAR 4 trillion in construction. STRUX brings digital transformation, local data sovereignty and engineering quality to the projects shaping the Kingdom’s future.',
+    ar: 'تحشد رؤية 2030 أكثر من 4 تريليون ريال في الإنشاءات. تجلب STRUX التحول الرقمي والسيادة على البيانات وجودة الهندسة للمشاريع التي تصنع مستقبل المملكة.',
+  },
+  'v2030.localization': { en: 'Local data residency & PDPL compliance', ar: 'استضافة محلية للبيانات وامتثال لنظام حماية البيانات' },
+  'v2030.digital': { en: 'Digital transformation of construction', ar: 'التحول الرقمي لقطاع الإنشاءات' },
+  'v2030.quality': { en: 'World-class engineering quality & safety', ar: 'جودة وسلامة هندسية عالمية المستوى' },
+  'v2030.giga': { en: 'Aligned with the national giga-project portfolio', ar: 'متوافقة مع محفظة المشاريع الوطنية العملاقة' },
+
+  // ---- Executive dashboard ----
+  'nav.executive': { en: 'Executive', ar: 'لوحة تنفيذية' },
+  'page.executive': { en: 'Executive Dashboard', ar: 'اللوحة التنفيذية' },
+  'exec.subtitle': { en: 'Board-level view of portfolio health, risk and financial exposure', ar: 'عرض على مستوى المجلس لصحة المحفظة والمخاطر والتعرّض المالي' },
+  'exec.portfolioHealth': { en: 'Portfolio Health', ar: 'صحة المحفظة' },
+  'exec.financialExposure': { en: 'Financial Exposure', ar: 'التعرّض المالي' },
+  'exec.reworkAvoided': { en: 'Rework Avoided (YTD)', ar: 'إعادة عمل تم تفاديها (حتى تاريخه)' },
+  'exec.scheduleRisk': { en: 'Schedule at Risk', ar: 'جدول زمني معرّض للخطر' },
+  'exec.riskHeatmap': { en: 'Project Risk Heatmap', ar: 'خريطة حرارية لمخاطر المشاريع' },
+  'exec.topRisks': { en: 'Top Portfolio Risks', ar: 'أبرز مخاطر المحفظة' },
+  'exec.decisions': { en: 'Decisions Required', ar: 'قرارات مطلوبة' },
+  'exec.financialByProject': { en: 'Financial Exposure by Project', ar: 'التعرّض المالي حسب المشروع' },
+
+  // ---- Investor mode ----
+  'nav.investor': { en: 'Investor Mode', ar: 'وضع المستثمر' },
+  'page.investor': { en: 'Investor Mode', ar: 'وضع المستثمر' },
+  'inv.subtitle': { en: 'The opportunity, the market and the traction behind STRUX AI', ar: 'الفرصة والسوق والنمو خلف STRUX AI' },
+  'inv.thesis': { en: 'Investment Thesis', ar: 'أطروحة الاستثمار' },
+  'inv.thesisBody': {
+    en: 'Saudi Arabia is executing the world’s largest construction pipeline under Vision 2030. Every model, BOQ and RFI is a source of risk and cost. STRUX is the AI operating layer that sits on top of the existing BIM stack to eliminate rework, enforce Saudi compliance and accelerate delivery — a wedge into a vast, underserved market.',
+    ar: 'تنفّذ السعودية أكبر محفظة إنشاءات في العالم ضمن رؤية 2030. كل نموذج وجدول كميات وطلب معلومات هو مصدر للمخاطر والتكلفة. STRUX هي طبقة التشغيل الذكية فوق منظومة BIM الحالية للقضاء على إعادة العمل وفرض الامتثال السعودي وتسريع التنفيذ — مدخل إلى سوق ضخم غير مخدوم.',
+  },
+  'inv.market': { en: 'Market Opportunity', ar: 'فرصة السوق' },
+  'inv.tam': { en: 'TAM · Global construction tech', ar: 'السوق الكلي · تقنية الإنشاءات عالميًا' },
+  'inv.sam': { en: 'SAM · GCC BIM & compliance', ar: 'السوق المتاح · BIM والامتثال بدول الخليج' },
+  'inv.som': { en: 'SOM · KSA serviceable (3yr)', ar: 'السوق المستهدف · السعودية (3 سنوات)' },
+  'inv.traction': { en: 'Traction & Unit Economics', ar: 'النمو واقتصاديات الوحدة' },
+  'inv.arr': { en: 'Annual Recurring Revenue', ar: 'الإيراد السنوي المتكرر' },
+  'inv.growth': { en: 'QoQ Growth', ar: 'النمو ربع السنوي' },
+  'inv.pipeline': { en: 'Sales Pipeline', ar: 'خط المبيعات' },
+  'inv.nrr': { en: 'Net Revenue Retention', ar: 'الاحتفاظ الصافي بالإيراد' },
+  'inv.cac': { en: 'CAC Payback', ar: 'استرداد تكلفة الاستحواذ' },
+  'inv.gross': { en: 'Gross Margin', ar: 'هامش الربح الإجمالي' },
+  'inv.why': { en: 'Why STRUX wins', ar: 'لماذا تفوز STRUX' },
+  'inv.raise': { en: 'The Raise', ar: 'جولة التمويل' },
+  'inv.raiseBody': {
+    en: 'Raising a Series A to expand the Saudi Compliance Engine, deepen Autodesk/Navisworks integrations and grow the GTM team across the Kingdom.',
+    ar: 'نجمع جولة من الفئة A لتوسيع محرك الامتثال السعودي، وتعميق التكامل مع Autodesk/Navisworks، وتنمية فريق المبيعات في أنحاء المملكة.',
+  },
+  'inv.confidential': { en: 'Confidential — illustrative figures for demo purposes', ar: 'سرّي — أرقام توضيحية لأغراض العرض' },
+
+  // Investor toggle (topbar)
+  'mode.investorOn': { en: 'Investor Mode', ar: 'وضع المستثمر' },
 }
 
 export function translate(key: string, lang: Lang): string {

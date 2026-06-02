@@ -13,19 +13,25 @@ import {
   IconLogout,
   IconSparkle,
   IconCube,
+  IconReport,
+  IconBolt,
 } from './ui/Icons'
 
 const nav = [
   { to: '/app/dashboard', key: 'nav.dashboard', icon: IconDashboard },
+  { to: '/app/executive', key: 'nav.executive', icon: IconReport },
   { to: '/app/projects', key: 'nav.projects', icon: IconProjects },
   { to: '/app/upload', key: 'nav.upload', icon: IconUpload },
   { to: '/app/analysis', key: 'nav.analysis', icon: IconAnalysis },
   { to: '/app/viewer', key: 'nav.viewer', icon: IconCube },
+  { to: '/app/investor', key: 'nav.investor', icon: IconBolt },
   { to: '/app/settings', key: 'nav.settings', icon: IconSettings },
 ]
 
 const titleKey: Record<string, string> = {
   dashboard: 'page.dashboard',
+  executive: 'page.executive',
+  investor: 'page.investor',
   projects: 'page.projects',
   upload: 'page.upload',
   analysis: 'page.analysis',
@@ -52,7 +58,7 @@ export default function Layout() {
           <Brand />
         </div>
 
-        <nav className="flex flex-col gap-1 p-3">
+        <nav className="flex max-h-[calc(100vh-9.5rem)] flex-col gap-1 overflow-y-auto p-3">
           {nav.map((item) => (
             <NavLink
               key={item.to}
