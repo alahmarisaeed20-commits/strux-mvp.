@@ -9,6 +9,11 @@ into decisions for Contractors, Consultants, BIM Managers and Owners.
 
 This repository is a **clickable, investor-ready MVP prototype** (front-end only, mock data).
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
+
+> 🌍 **Want a public shareable link?** See **[DEPLOY.md](./DEPLOY.md)** — the repo is
+> pre-configured for a one-click Vercel deployment (SPA routing + optimized chunks).
+
 ---
 
 ## ✨ Modules included
