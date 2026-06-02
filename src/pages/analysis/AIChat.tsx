@@ -4,6 +4,7 @@ import { IconSend, IconSparkle, IconBolt } from '../../components/ui/Icons'
 import { StruxGlyph } from '../../components/Brand'
 import { useI18n } from '../../i18n'
 import { chatSuggestions } from '../../data/mock'
+import { chatAr } from '../../data/ar'
 
 interface Msg {
   role: 'user' | 'ai'
@@ -11,24 +12,25 @@ interface Msg {
   typing?: boolean
 }
 
-// Find the best canned answer for a free-typed question (keyword match),
-// falling back to a sensible default.
-function answerFor(q: string): string {
+// Keyword-match a free-typed question against the active-language suggestions.
+function answerFor(q: string, list: { q: string; a: string }[], fallback: string): string {
   const lc = q.toLowerCase()
   const hit =
-    chatSuggestions.find((s) => s.q.toLowerCase() === lc) ||
-    chatSuggestions.find((s) => {
-      const keys = s.q.toLowerCase().split(/\s+/).filter((w) => w.length > 4)
-      return keys.some((k) => lc.includes(k))
+    list.find((s) => s.q.toLowerCase() === lc) ||
+    list.find((s) => {
+      const keys = s.q.split(/\s+/).filter((w) => w.length > 4)
+      return keys.some((k) => q.includes(k))
     })
-  return (
-    hit?.a ??
-    `Based on the current analysis of Riyadh Mixed-Use Tower: the model is at 94% BIM health with 72 open issues (11 high-risk) and 91% Saudi compliance. The most pressing items are clash CL-1090 and compliance violation CV-01. Ask me about clashes, compliance, quantities, or request an executive report.`
-  )
+  return hit?.a ?? fallback
 }
 
 export default function AIChat() {
-  const { t } = useI18n()
+  const { t, lang } = useI18n()
+  const sugg = lang === 'ar' ? chatAr : chatSuggestions
+  const fallback =
+    lang === 'ar'
+      ? 'بناءً على التحليل الحالي لبرج الرياض متعدد الاستخدامات: النموذج بمؤشر جودة 94% مع 72 ملاحظة مفتوحة (منها 11 عالية الخطورة) و91% امتثال سعودي. وأبرز البنود هي التعارض CL-1090 والمخالفة CV-01. اسألني عن التعارضات أو الامتثال أو الكميات، أو اطلب تقريرًا تنفيذيًا.'
+      : 'Based on the current analysis of Riyadh Mixed-Use Tower: the model is at 94% BIM health with 72 open issues (11 high-risk) and 91% Saudi compliance. The most pressing items are clash CL-1090 and compliance violation CV-01. Ask me about clashes, compliance, quantities, or request an executive report.'
   const [messages, setMessages] = useState<Msg[]>([{ role: 'ai', text: t('chat.greeting') }])
   const [input, setInput] = useState('')
   const endRef = useRef<HTMLDivElement>(null)
@@ -45,7 +47,7 @@ export default function AIChat() {
     setTimeout(() => {
       setMessages((m) => {
         const copy = [...m]
-        copy[copy.length - 1] = { role: 'ai', text: answerFor(q) }
+        copy[copy.length - 1] = { role: 'ai', text: answerFor(q, sugg, fallback) }
         return copy
       })
     }, 900)
@@ -60,11 +62,11 @@ export default function AIChat() {
         </h3>
         <p className="mt-0.5 text-xs text-silver-400">{t('chat.tap')}</p>
         <div className="mt-3 space-y-2">
-          {chatSuggestions.map((s) => (
+          {sugg.map((s) => (
             <button
               key={s.q}
               onClick={() => send(s.q)}
-              className="w-full rounded-lg border border-white/5 bg-navy-950/40 p-2.5 text-left text-xs font-medium text-silver-300 transition hover:border-electric-500/30 hover:text-silver-100"
+              className="w-full rounded-lg border border-white/5 bg-navy-950/40 p-2.5 text-start text-xs font-medium text-silver-300 transition hover:border-electric-500/30 hover:text-silver-100"
             >
               {s.q}
             </button>

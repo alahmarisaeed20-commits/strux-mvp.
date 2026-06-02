@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useI18n } from '../i18n'
 import { chatSuggestions } from '../data/mock'
+import { chatAr } from '../data/ar'
 import { StruxMark } from './Logo'
 import { IconSparkle, IconSend, IconX } from './ui/Icons'
 
@@ -10,23 +11,25 @@ interface Msg {
   typing?: boolean
 }
 
-function answerFor(q: string): string {
+function answerFor(q: string, list: { q: string; a: string }[], fallback: string): string {
   const lc = q.toLowerCase()
   const hit =
-    chatSuggestions.find((s) => s.q.toLowerCase() === lc) ||
-    chatSuggestions.find((s) => {
-      const keys = s.q.toLowerCase().split(/\s+/).filter((w) => w.length > 4)
-      return keys.some((k) => lc.includes(k))
+    list.find((s) => s.q.toLowerCase() === lc) ||
+    list.find((s) => {
+      const keys = s.q.split(/\s+/).filter((w) => w.length > 4)
+      return keys.some((k) => q.includes(k))
     })
-  return (
-    hit?.a ??
-    'Across the portfolio: BIM health is 92%, Saudi compliance 88%, with SAR 1.36M of financial exposure concentrated in 14 critical risks. The single highest-impact action is resolving clash CL-1090 on Riyadh Mixed-Use Tower. Ask me about risks, clashes, compliance, quantities or request an executive report.'
-  )
+  return hit?.a ?? fallback
 }
 
 // Floating STRUX Copilot — available across the authenticated app.
 export default function Copilot() {
-  const { t } = useI18n()
+  const { t, lang } = useI18n()
+  const sugg = lang === 'ar' ? chatAr : chatSuggestions
+  const fallback =
+    lang === 'ar'
+      ? 'على مستوى المحفظة: مؤشر جودة النماذج 92%، والامتثال السعودي 88%، مع تعرض مالي قدره 1.36 مليون ريال يتركّز في 14 مخاطرة حرجة. والإجراء الأعلى أثرًا هو معالجة التعارض CL-1090 في برج الرياض متعدد الاستخدامات. اسألني عن المخاطر أو التعارضات أو الامتثال أو الكميات، أو اطلب تقريرًا تنفيذيًا.'
+      : 'Across the portfolio: BIM health is 92%, Saudi compliance 88%, with SAR 1.36M of financial exposure concentrated in 14 critical risks. The single highest-impact action is resolving clash CL-1090 on Riyadh Mixed-Use Tower. Ask me about risks, clashes, compliance, quantities or request an executive report.'
   const [open, setOpen] = useState(false)
   const [input, setInput] = useState('')
   const [messages, setMessages] = useState<Msg[]>([{ role: 'ai', text: t('cp.greeting') }])
@@ -50,7 +53,7 @@ export default function Copilot() {
     setTimeout(() => {
       setMessages((m) => {
         const copy = [...m]
-        copy[copy.length - 1] = { role: 'ai', text: answerFor(q) }
+        copy[copy.length - 1] = { role: 'ai', text: answerFor(q, sugg, fallback) }
         return copy
       })
     }, 850)
@@ -130,7 +133,7 @@ export default function Copilot() {
 
           {/* Suggestions */}
           <div className="flex flex-wrap gap-1.5 border-t border-white/5 p-2.5">
-            {chatSuggestions.slice(0, 3).map((s) => (
+            {sugg.slice(0, 3).map((s) => (
               <button
                 key={s.q}
                 onClick={() => send(s.q)}
