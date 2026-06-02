@@ -22,7 +22,9 @@ This repository is a **clickable, investor-ready MVP prototype** (front-end only
 |---|--------|---------------|
 | 0 | **Premium Landing** (`/`) | Investor-grade marketing site — animated hero, BIM screenshot mock-ups, trusted-by marquee, count-up stats, module grid, Vision 2030 section, investor teaser, footer |
 | 0a | **Executive Dashboard** (`/app/executive`) | C-suite view — portfolio health, financial exposure, project risk heatmap, exposure-by-project chart, decisions required |
-| 0b | **Investor Mode** (`/app/investor`) | Investment thesis, TAM/SAM/SOM market sizing, traction & unit economics, "why we win", the raise, Vision 2030 |
+| 0b | **Investor Dashboard** (`/app/investor`) | Pre-Seed deck (SAR 7M): Problem → Solution → Why Now → Market → Business Model → Competitive Advantage → Moat → **STRUX Intelligence Index™** → Why We Win → The Round → Funding Roadmap → Vision 2030 |
+| 0c | **STRUX Copilot** | Floating bilingual AI assistant available across the app (risks, clashes, compliance, reports) |
+| 0d | **STRUX Intelligence Index™** | Signature composite metric (compliance · quality · risk · cost · schedule) shown on the Portfolio, Executive & Investor dashboards |
 | 1 | **Login** (`/login`) | Enterprise sign-in for Contractors, Consultants, BIM Managers & Owners |
 | 2 | **Command Dashboard** | BIM Health 92%, 247 issues, 38 high-risk, 16 RFIs, 18 projects, 4,200 reports, 88% compliance + charts |
 | 3 | **Project Workspace** | Riyadh Tower, NEOM, Hospital, Industrial Factory — BIM score, issues, compliance, risk, last upload |

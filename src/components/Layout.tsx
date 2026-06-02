@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { Brand } from './Brand'
+import Copilot from './Copilot'
 import { useI18n } from '../i18n'
 import {
   IconDashboard,
@@ -186,6 +187,9 @@ export default function Layout() {
           </div>
         </main>
       </div>
+
+      {/* Floating AI assistant */}
+      <Copilot />
     </div>
   )
 }

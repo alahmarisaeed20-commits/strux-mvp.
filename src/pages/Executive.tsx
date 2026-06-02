@@ -8,11 +8,12 @@ import {
   ResponsiveContainer,
   Cell,
 } from 'recharts'
-import { Card, Badge, ScoreRing, toneFor } from '../components/ui/primitives'
+import { Card, Badge, toneFor } from '../components/ui/primitives'
 import { CountUp } from '../components/ui/motion'
 import Sparkline from '../components/ui/Sparkline'
+import IntelligenceIndex, { IndexBadge } from '../components/IntelligenceIndex'
 import { useI18n } from '../i18n'
-import { IconBolt, IconClash, IconShield, IconReport, IconArrowRight } from '../components/ui/Icons'
+import { IconBolt, IconClash, IconShield, IconReport, IconArrowRight, IconSparkle } from '../components/ui/Icons'
 import { Link } from 'react-router-dom'
 import { projects, executiveReport, dashboardKpis } from '../data/mock'
 
@@ -88,10 +89,47 @@ export default function Executive() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h2 className="text-lg font-semibold tracking-tight text-silver-100">{t('page.executive')}</h2>
-        <p className="text-sm text-silver-400">{t('exec.subtitle')}</p>
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h2 className="text-lg font-semibold tracking-tight text-silver-100">{t('page.executive')}</h2>
+          <p className="text-sm text-silver-400">{t('exec.subtitle')}</p>
+        </div>
+        <IndexBadge />
       </div>
+
+      {/* AI Executive Summary */}
+      <Card className="relative overflow-hidden border-electric-500/20 bg-gradient-to-br from-electric-500/10 to-transparent">
+        <div className="pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full bg-electric-500/10 blur-2xl" />
+        <div className="relative flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex items-start gap-3">
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-electric-500/20 text-electric-300">
+              <IconSparkle className="h-6 w-6" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h3 className="text-sm font-semibold text-silver-100">{t('exec.aiSummary')}</h3>
+                <Badge tone="green">{t('exec.healthy')}</Badge>
+              </div>
+              <p className="mt-1 max-w-2xl text-sm leading-relaxed text-silver-300">
+                <span className="font-semibold text-electric-200">{t('exec.aiRec')}:</span> {t('exec.aiRecBody')}
+              </p>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:shrink-0">
+            {[
+              { label: t('exec.activeProjects'), value: <CountUp to={18} /> },
+              { label: t('exec.criticalRisks'), value: <CountUp to={14} /> },
+              { label: t('exec.financialExposure'), value: <>SAR <CountUp to={1.36} decimals={2} />M</> },
+              { label: t('exec.potentialSavings'), value: <>SAR <CountUp to={42} />M</> },
+            ].map((s, i) => (
+              <div key={i} className="rounded-lg border border-white/5 bg-navy-950/40 p-2.5 text-center">
+                <div className="text-lg font-bold text-silver-100">{s.value}</div>
+                <div className="text-[10px] text-silver-400">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Card>
 
       {/* KPIs */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -152,14 +190,7 @@ export default function Executive() {
           </div>
         </Card>
 
-        <Card className="flex flex-col items-center justify-center text-center">
-          <ScoreRing value={dashboardKpis.complianceScore} size={140} label={t('dash.compliance')} />
-          <p className="mt-3 text-sm text-silver-400">{t('exec.portfolioHealth')}</p>
-          <div className="mt-3 flex gap-2">
-            <Badge tone="green">2 Compliant</Badge>
-            <Badge tone="amber">2 At Risk</Badge>
-          </div>
-        </Card>
+        <IntelligenceIndex />
       </div>
 
       {/* Exposure chart + top risks */}

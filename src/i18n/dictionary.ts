@@ -11,8 +11,8 @@ export const dict: Dict = {
   // Brand / tagline
   'brand.tagline': { en: 'Engineering Intelligence', ar: 'ذكاء هندسي' },
   'brand.fulltagline': {
-    en: 'The AI Operating Layer for Engineering & Construction',
-    ar: 'طبقة التشغيل الذكية للهندسة والإنشاءات',
+    en: 'The Intelligence Layer Above BIM',
+    ar: 'طبقة الذكاء فوق نمذجة BIM',
   },
   'brand.platform': { en: 'AI Engineering Intelligence Platform', ar: 'منصة الذكاء الهندسي بالذكاء الاصطناعي' },
 
@@ -41,10 +41,10 @@ export const dict: Dict = {
   // Common
   'common.openProject': { en: 'Open Project', ar: 'فتح المشروع' },
   'common.viewAll': { en: 'View all', ar: 'عرض الكل' },
-  'common.issues': { en: 'issues', ar: 'مشكلة' },
-  'common.bimScore': { en: 'BIM score', ar: 'تقييم BIM' },
-  'common.lastUpload': { en: 'Last upload', ar: 'آخر رفع' },
-  'common.risk': { en: 'risk', ar: 'مخاطرة' },
+  'common.issues': { en: 'issues', ar: 'ملاحظة' },
+  'common.bimScore': { en: 'BIM score', ar: 'جودة النموذج' },
+  'common.lastUpload': { en: 'Last upload', ar: 'آخر تحديث للنموذج' },
+  'common.risk': { en: 'risk', ar: 'الخطورة' },
   'common.save': { en: 'Save Changes', ar: 'حفظ التغييرات' },
   'common.cancel': { en: 'Cancel', ar: 'إلغاء' },
   'common.download': { en: 'Download PDF', ar: 'تحميل PDF' },
@@ -65,11 +65,11 @@ export const dict: Dict = {
   'login.enter': { en: 'Enter STRUX Platform', ar: 'الدخول إلى منصة STRUX' },
   'login.demoNote': { en: 'Demo prototype · no real authentication. Any credentials continue.', ar: 'نموذج تجريبي · بدون مصادقة حقيقية. أي بيانات اعتماد تتابع.' },
   'login.builtFor': { en: 'Built for Contractors, Consultants, BIM Managers & Owners', ar: 'مصمم للمقاولين والاستشاريين ومديري BIM والملاك' },
-  'login.heroTitle1': { en: 'The AI Operating Layer for', ar: 'طبقة التشغيل الذكية لـ' },
-  'login.heroTitle2': { en: 'Engineering & Construction', ar: 'الهندسة والإنشاءات' },
+  'login.heroTitle1': { en: 'The Intelligence Layer', ar: 'طبقة الذكاء' },
+  'login.heroTitle2': { en: 'Above BIM', ar: 'فوق نمذجة BIM' },
   'login.heroDesc': {
-    en: 'STRUX adds an intelligence layer on top of your BIM files, IFC/Revit models, BOQs and Saudi compliance requirements — without replacing Autodesk, Revit or Navisworks.',
-    ar: 'تضيف STRUX طبقة ذكاء فوق ملفات BIM ونماذج IFC/Revit وجداول الكميات ومتطلبات الامتثال السعودية — دون استبدال Autodesk أو Revit أو Navisworks.',
+    en: 'STRUX is not a BIM viewer. It is an AI-powered Engineering Intelligence Platform that sits above Autodesk Revit, Navisworks and the IFC ecosystem — turning engineering data into executive decisions.',
+    ar: 'STRUX ليست عارض نماذج BIM، بل منصة ذكاء هندسي مدعومة بالذكاء الاصطناعي تعمل فوق Autodesk Revit وNavisworks ومنظومة IFC، وتحوّل البيانات الهندسية إلى قرارات تنفيذية.',
   },
   'login.residency': { en: 'KSA Data Residency', ar: 'استضافة البيانات داخل السعودية' },
   'login.iso': { en: 'ISO 19650 Aligned', ar: 'متوافق مع ISO 19650' },
@@ -89,32 +89,32 @@ export const dict: Dict = {
   // Dashboard
   'dash.greeting': { en: 'Good morning, Saeed — your portfolio is', ar: 'صباح الخير سعيد — محفظة مشاريعك' },
   'dash.healthy': { en: 'healthy', ar: 'بحالة جيدة' },
-  'dash.portfolioSub': { en: '18 active projects · 38 high-risk issues need attention this week.', ar: '18 مشروعًا نشطًا · 38 مشكلة عالية الخطورة تحتاج إلى اهتمام هذا الأسبوع.' },
+  'dash.portfolioSub': { en: '18 active projects · 38 high-risk issues need attention this week.', ar: '18 مشروعًا نشطًا · 38 ملاحظة هندسية عالية الخطورة تستدعي المعالجة هذا الأسبوع.' },
   'dash.portfolioLive': { en: 'Portfolio Intelligence · Live', ar: 'ذكاء المحفظة · مباشر' },
-  'dash.bimHealth': { en: 'BIM Health', ar: 'صحة BIM' },
+  'dash.bimHealth': { en: 'BIM Health', ar: 'جودة نموذج BIM' },
   'dash.compliance': { en: 'Compliance', ar: 'الامتثال' },
-  'kpi.totalIssues': { en: 'Total Issues', ar: 'إجمالي المشكلات' },
-  'kpi.highRisk': { en: 'High Risk Issues', ar: 'مشكلات عالية الخطورة' },
-  'kpi.openRfis': { en: 'Open RFIs', ar: 'طلبات معلومات مفتوحة' },
+  'kpi.totalIssues': { en: 'Total Issues', ar: 'إجمالي الملاحظات الهندسية' },
+  'kpi.highRisk': { en: 'High Risk Issues', ar: 'الملاحظات عالية الخطورة' },
+  'kpi.openRfis': { en: 'Open RFIs', ar: 'طلبات الاستفسار الهندسية المفتوحة' },
   'kpi.projects': { en: 'Active Projects', ar: 'المشاريع النشطة' },
   'kpi.reports': { en: 'Reports Generated', ar: 'التقارير المُنشأة' },
-  'kpi.bimScore': { en: 'BIM Health Score', ar: 'مؤشر صحة BIM' },
+  'kpi.bimScore': { en: 'BIM Health Score', ar: 'مؤشر جودة نموذج BIM' },
   'kpi.complianceScore': { en: 'Compliance Score', ar: 'مؤشر الامتثال' },
-  'kpi.highClashes': { en: 'High-Risk Clashes', ar: 'تعارضات عالية الخطورة' },
-  'dash.trend': { en: 'Issue Resolution & Health Trend', ar: 'اتجاه حل المشكلات والصحة' },
-  'dash.trendSub': { en: 'Detected vs resolved over the last 8 weeks', ar: 'المكتشفة مقابل المحلولة خلال آخر 8 أسابيع' },
-  'dash.byDiscipline': { en: 'Issues by Discipline', ar: 'المشكلات حسب التخصص' },
-  'dash.severity': { en: 'Severity Breakdown', ar: 'توزيع الخطورة' },
+  'kpi.highClashes': { en: 'High-Risk Clashes', ar: 'التعارضات عالية الخطورة' },
+  'dash.trend': { en: 'Issue Resolution & Health Trend', ar: 'اتجاه معالجة الملاحظات وجودة النماذج' },
+  'dash.trendSub': { en: 'Detected vs resolved over the last 8 weeks', ar: 'المرصودة مقابل المعالَجة خلال آخر 8 أسابيع' },
+  'dash.byDiscipline': { en: 'Issues by Discipline', ar: 'الملاحظات حسب التخصص الهندسي' },
+  'dash.severity': { en: 'Severity Breakdown', ar: 'توزيع درجات الخطورة' },
   'dash.projectStatus': { en: 'Project Status', ar: 'حالة المشاريع' },
 
   // Projects
-  'proj.subtitle': { en: 'active projects · sorted by risk exposure', ar: 'مشاريع نشطة · مرتبة حسب التعرض للمخاطر' },
+  'proj.subtitle': { en: 'active projects · sorted by risk exposure', ar: 'مشاريع نشطة · مرتّبة حسب درجة التعرض للمخاطر' },
   'proj.uploadNew': { en: 'Upload New Model', ar: 'رفع نموذج جديد' },
   'proj.portfolioValue': { en: 'Portfolio Value', ar: 'قيمة المحفظة' },
-  'proj.avgBim': { en: 'Avg BIM Score', ar: 'متوسط تقييم BIM' },
-  'proj.openIssues': { en: 'Open Issues', ar: 'مشكلات مفتوحة' },
+  'proj.avgBim': { en: 'Avg BIM Score', ar: 'متوسط جودة النماذج' },
+  'proj.openIssues': { en: 'Open Issues', ar: 'الملاحظات المفتوحة' },
   'proj.avgCompliance': { en: 'Avg Compliance', ar: 'متوسط الامتثال' },
-  'proj.progress': { en: 'Project progress', ar: 'تقدّم المشروع' },
+  'proj.progress': { en: 'Project progress', ar: 'نسبة إنجاز المشروع' },
   'proj.highRisk': { en: 'High Risk', ar: 'عالية الخطورة' },
 
   // Upload
@@ -242,12 +242,13 @@ export const dict: Dict = {
   'land.signin': { en: 'Sign in', ar: 'تسجيل الدخول' },
   'land.launch': { en: 'Launch Demo', ar: 'تشغيل العرض' },
   'land.heroBadge': { en: 'Backed for the Saudi Vision 2030 construction boom', ar: 'مدعومة لطفرة الإنشاءات ضمن رؤية السعودية 2030' },
-  'land.heroTitle1': { en: 'The AI Operating Layer for', ar: 'طبقة التشغيل الذكية لـ' },
-  'land.heroTitle2': { en: 'Engineering & Construction', ar: 'الهندسة والإنشاءات' },
+  'land.heroTitle1': { en: 'The Intelligence Layer', ar: 'طبقة الذكاء' },
+  'land.heroTitle2': { en: 'Above BIM', ar: 'فوق نمذجة BIM' },
   'land.heroDesc': {
-    en: 'STRUX turns your BIM models, IFC/Revit files, BOQs and specifications into decisions — automated QA/QC, clash intelligence, Saudi compliance, quantity take-off and executive reporting. It augments Autodesk, Revit and Navisworks; it never replaces them.',
-    ar: 'تحوّل STRUX نماذج BIM وملفات IFC/Revit وجداول الكميات والمواصفات إلى قرارات — ضبط جودة آلي، وذكاء تعارضات، وامتثال سعودي، وحصر كميات، وتقارير تنفيذية. تعزّز Autodesk وRevit وNavisworks ولا تستبدلها أبدًا.',
+    en: 'STRUX is not a BIM viewer. It is an AI-powered Engineering Intelligence Platform that sits above Autodesk Revit, Navisworks and the IFC ecosystem — transforming engineering data into executive decisions through automated QA/QC, clash intelligence, Saudi compliance and executive reporting.',
+    ar: 'STRUX ليست عارض نماذج BIM، بل منصة ذكاء هندسي مدعومة بالذكاء الاصطناعي تعمل فوق Autodesk Revit وNavisworks ومنظومة IFC — تحوّل البيانات الهندسية إلى قرارات تنفيذية عبر ضبط الجودة الآلي وذكاء التعارضات والامتثال السعودي والتقارير التنفيذية.',
   },
+  'land.posBand': { en: 'STRUX is NOT a BIM Viewer.', ar: 'STRUX ليست عارض نماذج BIM.' },
   'land.ctaPrimary': { en: 'Launch Live Demo', ar: 'تشغيل العرض المباشر' },
   'land.ctaSecondary': { en: 'For Investors', ar: 'للمستثمرين' },
   'land.trusted': { en: 'Built for the Kingdom’s largest developers & giga-projects', ar: 'مصمم لأكبر المطورين والمشاريع العملاقة في المملكة' },
@@ -280,46 +281,133 @@ export const dict: Dict = {
   'v2030.quality': { en: 'World-class engineering quality & safety', ar: 'جودة وسلامة هندسية عالمية المستوى' },
   'v2030.giga': { en: 'Aligned with the national giga-project portfolio', ar: 'متوافقة مع محفظة المشاريع الوطنية العملاقة' },
 
+  // ---- Positioning ----
+  'pos.layer': { en: 'The Intelligence Layer Above BIM', ar: 'طبقة الذكاء فوق نمذجة BIM' },
+  'pos.notViewer': {
+    en: 'STRUX is not a BIM viewer. It is an AI-powered Engineering Intelligence Platform that sits above Autodesk Revit, Navisworks and the IFC ecosystem — turning engineering data into executive decisions.',
+    ar: 'STRUX ليست عارض نماذج BIM، بل منصة ذكاء هندسي مدعومة بالذكاء الاصطناعي تعمل فوق Autodesk Revit وNavisworks ومنظومة IFC، وتحوّل البيانات الهندسية إلى قرارات تنفيذية.',
+  },
+  'pos.os': { en: 'The Operating System for Construction Intelligence', ar: 'نظام التشغيل للذكاء الهندسي في الإنشاءات' },
+  'pos.constructionIntel': { en: 'Construction Intelligence', ar: 'الذكاء الهندسي للإنشاءات' },
+
+  // ---- STRUX Intelligence Index ----
+  'idx.name': { en: 'STRUX Intelligence Index™', ar: 'مؤشر STRUX للذكاء الهندسي™' },
+  'idx.powered': { en: 'Powered by STRUX Intelligence Index™', ar: 'مدعوم بمؤشر STRUX للذكاء الهندسي™' },
+  'idx.of': { en: 'out of 100', ar: 'من 100' },
+  'idx.desc': {
+    en: 'A composite score across compliance, quality, risk, cost and schedule.',
+    ar: 'مؤشر مركّب يجمع الامتثال والجودة والمخاطر والتكلفة والجدول الزمني.',
+  },
+  'idx.compliance': { en: 'Compliance', ar: 'الامتثال' },
+  'idx.quality': { en: 'Quality', ar: 'الجودة' },
+  'idx.risk': { en: 'Risk', ar: 'المخاطر' },
+  'idx.cost': { en: 'Cost', ar: 'التكلفة' },
+  'idx.schedule': { en: 'Schedule', ar: 'الجدول الزمني' },
+
   // ---- Executive dashboard ----
-  'nav.executive': { en: 'Executive', ar: 'لوحة تنفيذية' },
-  'page.executive': { en: 'Executive Dashboard', ar: 'اللوحة التنفيذية' },
-  'exec.subtitle': { en: 'Board-level view of portfolio health, risk and financial exposure', ar: 'عرض على مستوى المجلس لصحة المحفظة والمخاطر والتعرّض المالي' },
+  'nav.executive': { en: 'Executive', ar: 'لوحة القيادة التنفيذية' },
+  'page.executive': { en: 'Executive Dashboard', ar: 'لوحة القيادة التنفيذية' },
+  'exec.subtitle': { en: 'Board-level view of portfolio health, risk and financial exposure', ar: 'عرض على مستوى مجلس الإدارة لصحة المحفظة والمخاطر وحجم التعرض المالي' },
   'exec.portfolioHealth': { en: 'Portfolio Health', ar: 'صحة المحفظة' },
-  'exec.financialExposure': { en: 'Financial Exposure', ar: 'التعرّض المالي' },
-  'exec.reworkAvoided': { en: 'Rework Avoided (YTD)', ar: 'إعادة عمل تم تفاديها (حتى تاريخه)' },
-  'exec.scheduleRisk': { en: 'Schedule at Risk', ar: 'جدول زمني معرّض للخطر' },
-  'exec.riskHeatmap': { en: 'Project Risk Heatmap', ar: 'خريطة حرارية لمخاطر المشاريع' },
+  'exec.financialExposure': { en: 'Financial Exposure', ar: 'حجم التعرض المالي' },
+  'exec.reworkAvoided': { en: 'Rework Avoided (YTD)', ar: 'تكلفة إعادة العمل المتجنبة (حتى تاريخه)' },
+  'exec.scheduleRisk': { en: 'Schedule at Risk', ar: 'الجدول الزمني المعرّض للخطر' },
+  'exec.riskHeatmap': { en: 'Project Risk Heatmap', ar: 'الخريطة الحرارية لمخاطر المشاريع' },
   'exec.topRisks': { en: 'Top Portfolio Risks', ar: 'أبرز مخاطر المحفظة' },
   'exec.decisions': { en: 'Decisions Required', ar: 'قرارات مطلوبة' },
-  'exec.financialByProject': { en: 'Financial Exposure by Project', ar: 'التعرّض المالي حسب المشروع' },
+  'exec.financialByProject': { en: 'Financial Exposure by Project', ar: 'حجم التعرض المالي حسب المشروع' },
+  // AI Executive Summary
+  'exec.aiSummary': { en: 'AI Executive Summary', ar: 'الملخص التنفيذي الذكي' },
+  'exec.status': { en: 'Portfolio Status', ar: 'حالة المحفظة' },
+  'exec.healthy': { en: 'Healthy', ar: 'سليمة' },
+  'exec.activeProjects': { en: 'Active Projects', ar: 'المشاريع النشطة' },
+  'exec.criticalRisks': { en: 'Critical Risks', ar: 'المخاطر الحرجة' },
+  'exec.potentialSavings': { en: 'Potential Savings', ar: 'الوفورات المحتملة' },
+  'exec.aiRec': { en: 'Executive Insight', ar: 'توصية تنفيذية' },
+  'exec.aiRecBody': {
+    en: 'Resolve the coordination conflicts on Riyadh Mixed-Use Tower within 7 days to protect SAR 140K and 7 days of schedule float before shop-drawing approval.',
+    ar: 'يُوصى بمعالجة تعارضات التنسيق في برج الرياض متعدد الاستخدامات خلال 7 أيام لحماية 140 ألف ريال و7 أيام من الفائض الزمني قبل اعتماد المخططات التنفيذية.',
+  },
 
-  // ---- Investor mode ----
-  'nav.investor': { en: 'Investor Mode', ar: 'وضع المستثمر' },
-  'page.investor': { en: 'Investor Mode', ar: 'وضع المستثمر' },
-  'inv.subtitle': { en: 'The opportunity, the market and the traction behind STRUX AI', ar: 'الفرصة والسوق والنمو خلف STRUX AI' },
-  'inv.thesis': { en: 'Investment Thesis', ar: 'أطروحة الاستثمار' },
-  'inv.thesisBody': {
-    en: 'Saudi Arabia is executing the world’s largest construction pipeline under Vision 2030. Every model, BOQ and RFI is a source of risk and cost. STRUX is the AI operating layer that sits on top of the existing BIM stack to eliminate rework, enforce Saudi compliance and accelerate delivery — a wedge into a vast, underserved market.',
-    ar: 'تنفّذ السعودية أكبر محفظة إنشاءات في العالم ضمن رؤية 2030. كل نموذج وجدول كميات وطلب معلومات هو مصدر للمخاطر والتكلفة. STRUX هي طبقة التشغيل الذكية فوق منظومة BIM الحالية للقضاء على إعادة العمل وفرض الامتثال السعودي وتسريع التنفيذ — مدخل إلى سوق ضخم غير مخدوم.',
+  // ---- Investor dashboard (Pre-Seed) ----
+  'nav.investor': { en: 'Investor', ar: 'لوحة المستثمر' },
+  'page.investor': { en: 'Investor Dashboard', ar: 'لوحة المستثمر' },
+  'inv.subtitle': {
+    en: 'Pre-Seed opportunity — the intelligence layer above BIM for Saudi construction.',
+    ar: 'فرصة في مرحلة ما قبل التأسيس — طبقة الذكاء فوق نمذجة BIM لقطاع الإنشاءات السعودي.',
   },
+  'inv.stageBadge': { en: 'Pre-Seed · Raising SAR 7M', ar: 'ما قبل التأسيس · جولة بقيمة 7 ملايين ريال' },
+  'inv.confidential': { en: 'Confidential — illustrative figures, Pre-Seed stage', ar: 'وثيقة سرّية — أرقام توضيحية، مرحلة ما قبل التأسيس' },
+
+  // 1 Problem
+  'inv.problemTag': { en: '01 · The Problem', ar: '01 · المشكلة' },
+  'inv.problemTitle': { en: 'Engineering data hides expensive risk', ar: 'البيانات الهندسية تُخفي مخاطر مكلفة' },
+  'inv.problemDesc': {
+    en: 'Construction projects suffer from cost overruns, coordination failures, BIM governance gaps, rework and compliance risk — and the warning signs are buried inside models, BOQs and specifications nobody can read at scale.',
+    ar: 'تعاني مشاريع الإنشاءات من تجاوزات التكلفة، وإخفاقات التنسيق، وفجوات حوكمة BIM، وإعادة العمل، ومخاطر الامتثال — ومؤشرات الإنذار مدفونة داخل النماذج وجداول الكميات والمواصفات التي يصعب تحليلها على نطاق واسع.',
+  },
+  'inv.stat1': { en: 'Rework consumes up to 5–15% of total construction costs.', ar: 'تستهلك إعادة العمل ما يصل إلى 5–15% من إجمالي تكاليف الإنشاء.' },
+  'inv.stat2': { en: 'Every BIM model, BOQ and specification document contains hidden risks.', ar: 'كل نموذج BIM وجدول كميات ووثيقة مواصفات يحتوي على مخاطر خفية.' },
+
+  // 2 Solution
+  'inv.solutionTag': { en: '02 · The Solution', ar: '02 · الحل' },
+  'inv.solutionTitle': { en: 'STRUX transforms BIM models into actionable engineering intelligence.', ar: 'تُحوّل STRUX نماذج BIM إلى ذكاء هندسي قابل للتنفيذ.' },
+  'inv.solOS': { en: 'The Operating System for Construction Intelligence', ar: 'نظام التشغيل للذكاء الهندسي في الإنشاءات' },
+
+  // 3 Why now
+  'inv.whyNowTag': { en: '03 · Why Now?', ar: '03 · لماذا الآن؟' },
+  'inv.whyNowTitle': { en: 'The market is ready in a way it was not five years ago', ar: 'السوق جاهز اليوم بشكل لم يكن متاحًا قبل خمس سنوات' },
+  'inv.whyNowClose': { en: 'The market is ready now in a way it was not five years ago.', ar: 'السوق جاهز الآن بشكل لم يكن عليه قبل خمس سنوات.' },
+
+  // 4 Market
+  'inv.marketTag': { en: '04 · Market Opportunity', ar: '04 · فرصة السوق' },
   'inv.market': { en: 'Market Opportunity', ar: 'فرصة السوق' },
-  'inv.tam': { en: 'TAM · Global construction tech', ar: 'السوق الكلي · تقنية الإنشاءات عالميًا' },
-  'inv.sam': { en: 'SAM · GCC BIM & compliance', ar: 'السوق المتاح · BIM والامتثال بدول الخليج' },
-  'inv.som': { en: 'SOM · KSA serviceable (3yr)', ar: 'السوق المستهدف · السعودية (3 سنوات)' },
-  'inv.traction': { en: 'Traction & Unit Economics', ar: 'النمو واقتصاديات الوحدة' },
-  'inv.arr': { en: 'Annual Recurring Revenue', ar: 'الإيراد السنوي المتكرر' },
-  'inv.growth': { en: 'QoQ Growth', ar: 'النمو ربع السنوي' },
-  'inv.pipeline': { en: 'Sales Pipeline', ar: 'خط المبيعات' },
-  'inv.nrr': { en: 'Net Revenue Retention', ar: 'الاحتفاظ الصافي بالإيراد' },
-  'inv.cac': { en: 'CAC Payback', ar: 'استرداد تكلفة الاستحواذ' },
-  'inv.gross': { en: 'Gross Margin', ar: 'هامش الربح الإجمالي' },
-  'inv.why': { en: 'Why STRUX wins', ar: 'لماذا تفوز STRUX' },
-  'inv.raise': { en: 'The Raise', ar: 'جولة التمويل' },
-  'inv.raiseBody': {
-    en: 'Raising a Series A to expand the Saudi Compliance Engine, deepen Autodesk/Navisworks integrations and grow the GTM team across the Kingdom.',
-    ar: 'نجمع جولة من الفئة A لتوسيع محرك الامتثال السعودي، وتعميق التكامل مع Autodesk/Navisworks، وتنمية فريق المبيعات في أنحاء المملكة.',
-  },
-  'inv.confidential': { en: 'Confidential — illustrative figures for demo purposes', ar: 'سرّي — أرقام توضيحية لأغراض العرض' },
+  'inv.tam': { en: 'TAM · GCC construction technology', ar: 'السوق الكلي · تقنية الإنشاءات الخليجية' },
+  'inv.sam': { en: 'SAM · KSA BIM & compliance software', ar: 'السوق المتاح · برمجيات BIM والامتثال في السعودية' },
+  'inv.som': { en: 'SOM · Serviceable in 3 years', ar: 'السوق القابل للاستحواذ · خلال 3 سنوات' },
+  'inv.marketNote': { en: 'Bottom-up sizing focused on KSA & GCC construction technology — deliberately conservative.', ar: 'تقدير تصاعدي يركّز على تقنية الإنشاءات في السعودية والخليج — مُحافظ عن قصد.' },
+
+  // 5 Business model
+  'inv.bmTag': { en: '05 · Business Model', ar: '05 · نموذج العمل' },
+  'inv.bmTitle': { en: 'Recurring, high-margin SaaS revenue', ar: 'إيرادات برمجيات متكررة وعالية الهامش' },
+  'inv.bmRecurring': { en: '~80% recurring revenue', ar: '~80% إيرادات متكررة' },
+
+  // 6 Competitive advantage
+  'inv.compTag': { en: '06 · Competitive Advantage', ar: '06 · الميزة التنافسية' },
+  'inv.compTitle': { en: 'Where STRUX is structurally different', ar: 'أين تختلف STRUX جوهريًا' },
+  'inv.colTraditional': { en: 'Traditional Consultancy', ar: 'الاستشارات التقليدية' },
+
+  // 7 Moat
+  'inv.moatTag': { en: '07 · Defensibility & Moat', ar: '07 · الحصانة التنافسية' },
+  'inv.moatTitle': { en: 'Defensibility & Competitive Moat', ar: 'الحصانة والميزة التنافسية الدفاعية' },
+  'inv.moatHeadline': { en: 'The more projects STRUX analyzes, the smarter it becomes.', ar: 'كلما حلّلت STRUX مشاريع أكثر، أصبحت أكثر ذكاءً.' },
+
+  // 8 Index section
+  'inv.indexTag': { en: '08 · Signature Metric', ar: '08 · المؤشر المميّز' },
+  'inv.indexTitle': { en: 'The STRUX Intelligence Index™', ar: 'مؤشر STRUX للذكاء الهندسي™' },
+
+  // 9 Why STRUX wins
+  'inv.winTag': { en: '09 · Why STRUX Wins', ar: '09 · لماذا تفوز STRUX' },
+  'inv.winTitle': { en: 'Why STRUX wins', ar: 'لماذا تفوز STRUX' },
+
+  // 10 Fundraising
+  'inv.fundTag': { en: '10 · The Round', ar: '10 · الجولة' },
+  'inv.fundTitle': { en: 'Current Round — Pre-Seed', ar: 'الجولة الحالية — ما قبل التأسيس' },
+  'inv.round': { en: 'Pre-Seed', ar: 'ما قبل التأسيس' },
+  'inv.currentRound': { en: 'Current Round', ar: 'الجولة الحالية' },
+  'inv.target': { en: 'Target Raise', ar: 'المبلغ المستهدف' },
+  'inv.useOfFunds': { en: 'Use of Funds', ar: 'أوجه استخدام التمويل' },
+  'inv.runway': { en: 'Runway', ar: 'المدى التشغيلي' },
+  'inv.runwayValue': { en: '18–24 month runway', ar: 'مدى تشغيلي من 18 إلى 24 شهرًا' },
+
+  // 11 Roadmap
+  'inv.roadmapTag': { en: '11 · Funding Roadmap', ar: '11 · خارطة طريق التمويل' },
+  'inv.roadmapTitle': { en: 'Future Funding Roadmap', ar: 'خارطة طريق التمويل المستقبلية' },
+  'inv.stagePre': { en: 'Pre-Seed', ar: 'ما قبل التأسيس' },
+  'inv.stageSeed': { en: 'Seed', ar: 'التأسيس' },
+  'inv.stageA': { en: 'Series A', ar: 'الجولة الأولى (A)' },
+  'inv.current': { en: 'Current', ar: 'الحالية' },
+  'inv.seedMilestones': { en: 'Seed Milestones', ar: 'مستهدفات جولة التأسيس' },
 
   // Investor toggle (topbar)
   'mode.investorOn': { en: 'Investor Mode', ar: 'وضع المستثمر' },
@@ -327,6 +415,16 @@ export const dict: Dict = {
   'mode.demoBanner': {
     en: 'Investor Demo Mode — illustrative figures, narrated highlights enabled.',
     ar: 'وضع عرض المستثمر — أرقام توضيحية مع إبراز النقاط الرئيسية.',
+  },
+
+  // ---- STRUX Copilot ----
+  'cp.name': { en: 'STRUX Copilot', ar: 'مساعد STRUX الذكي' },
+  'cp.subtitle': { en: 'AI engineering analyst', ar: 'محلّل هندسي بالذكاء الاصطناعي' },
+  'cp.open': { en: 'Ask STRUX Copilot', ar: 'اسأل مساعد STRUX' },
+  'cp.placeholder': { en: 'Ask about projects, risks, compliance…', ar: 'اسأل عن المشاريع أو المخاطر أو الامتثال…' },
+  'cp.greeting': {
+    en: "Hi — I'm STRUX Copilot. Ask me about your portfolio: risks, clashes, Saudi compliance, financial exposure, or ask me to generate an executive report.",
+    ar: 'مرحبًا — أنا مساعد STRUX الذكي. اسألني عن محفظتك: المخاطر، التعارضات، الامتثال السعودي، حجم التعرض المالي، أو اطلب مني إعداد تقرير تنفيذي.',
   },
 
   // Loading

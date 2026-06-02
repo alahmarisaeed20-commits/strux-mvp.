@@ -22,6 +22,18 @@ export const dashboardKpis = {
   complianceScore: 88,
 }
 
+// STRUX Intelligence Index™ — the platform's signature composite metric.
+export const intelligenceIndex = {
+  score: 91,
+  parts: [
+    { key: 'idx.compliance', value: 88 },
+    { key: 'idx.quality', value: 94 },
+    { key: 'idx.risk', value: 86 },
+    { key: 'idx.cost', value: 90 },
+    { key: 'idx.schedule', value: 93 },
+  ],
+}
+
 // Issue trend over the last 8 weeks (resolved vs newly detected)
 export const issueTrend = [
   { week: 'W1', detected: 64, resolved: 31, health: 81 },

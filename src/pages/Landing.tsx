@@ -183,6 +183,34 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* ===== Positioning band ===== */}
+      <section className="mx-auto max-w-7xl px-4 pb-4 sm:px-6">
+        <Reveal>
+          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-navy-850 to-navy-950 p-8 text-center sm:p-12">
+            <div className="pointer-events-none absolute inset-0 bg-grid-faint bg-[size:40px_40px] opacity-30" />
+            <p className="relative text-2xl font-extrabold tracking-tight text-silver-100 sm:text-3xl">
+              {t('land.posBand')}
+            </p>
+            <p className="relative mx-auto mt-3 max-w-3xl text-base leading-relaxed text-silver-300">{t('pos.notViewer')}</p>
+            {/* "above the stack" chips */}
+            <div className="relative mt-6 flex flex-col items-center gap-2">
+              <span className="rounded-lg border border-electric-500/40 bg-electric-500/15 px-4 py-2 text-sm font-bold text-electric-200">
+                STRUX · {t('pos.layer')}
+              </span>
+              <span className="text-silver-600">↑</span>
+              <div className="flex flex-wrap justify-center gap-2">
+                {['Autodesk Revit', 'Navisworks', 'IFC Ecosystem'].map((s) => (
+                  <span key={s} className="rounded-lg border border-white/10 bg-navy-900/70 px-4 py-2 text-sm font-medium text-silver-400">
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <p className="relative mt-6 text-sm font-semibold text-electric-300">“{t('pos.os')}”</p>
+          </div>
+        </Reveal>
+      </section>
+
       {/* ===== Modules ===== */}
       <section id="modules" className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">

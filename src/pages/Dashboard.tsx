@@ -17,6 +17,7 @@ import { useI18n } from '../i18n'
 import { Card, Badge, ProgressBar, ScoreRing, toneFor } from '../components/ui/primitives'
 import Sparkline from '../components/ui/Sparkline'
 import ProjectThumb from '../components/ProjectThumb'
+import IntelligenceIndex from '../components/IntelligenceIndex'
 import { CountUp } from '../components/ui/motion'
 import {
   IconAnalysis,
@@ -142,6 +143,9 @@ export default function Dashboard() {
         <Kpi id="kc" label={t('kpi.complianceScore')} to={88} suffix="%" delta="+6%" series={[78, 80, 82, 84, 85, 87, 88]} icon={IconShield} tone="blue" />
         <Kpi id="kx" label={t('kpi.highClashes')} to={14} delta="-3" series={[22, 20, 19, 17, 16, 15, 14]} icon={IconClash} tone="red" />
       </div>
+
+      {/* Signature metric */}
+      <IntelligenceIndex />
 
       {/* Charts row */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
