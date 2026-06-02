@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-navy-950 text-silver-100 font-sans antialiased;
+  }
+
+  /* Custom scrollbar — premium feel */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1d2c61;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2f6bff;
+    background-clip: content-box;
+  }
+}
+
+@layer components {
+  .strux-card {
+    @apply rounded-xl border border-white/5 bg-navy-900/70 shadow-card backdrop-blur;
+  }
+
+  .strux-input {
+    @apply w-full rounded-lg border border-white/10 bg-navy-950/60 px-3.5 py-2.5 text-sm text-silver-100 placeholder:text-silver-500 outline-none transition focus:border-electric-500 focus:ring-2 focus:ring-electric-500/30;
+  }
+
+  .strux-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .strux-btn-primary {
+    @apply strux-btn bg-electric-500 text-white hover:bg-electric-400 shadow-glow;
+  }
+
+  .strux-btn-ghost {
+    @apply strux-btn border border-white/10 bg-white/5 text-silver-200 hover:bg-white/10;
+  }
+}
+
+/* Subtle entrance animation used across pages */
+@keyframes fadeup {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fadeup {
+  animation: fadeup 0.4s ease both;
+}
+
+@keyframes pulseline {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
