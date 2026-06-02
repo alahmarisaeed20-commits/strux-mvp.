@@ -117,6 +117,75 @@ export default function Investor() {
     { en: 'GCC Expansion', ar: 'التوسع الخليجي' },
   ]
 
+  // Customer journey demo story
+  const journey: { who: L; step: L }[] = [
+    { who: { en: 'BIM Manager', ar: 'مدير BIM' }, step: { en: 'Uploads the federated Revit/IFC model and BOQ — no plugin, no migration.', ar: 'يرفع النموذج الموحّد Revit/IFC وجدول الكميات — دون إضافات أو ترحيل.' } },
+    { who: { en: 'STRUX AI', ar: 'STRUX AI' }, step: { en: 'Parses ~48,000 elements in minutes and builds a queryable element graph.', ar: 'يحلّل نحو 48,000 عنصر خلال دقائق ويبني رسمًا بيانيًا قابلًا للاستعلام.' } },
+    { who: { en: 'STRUX AI', ar: 'STRUX AI' }, step: { en: 'Runs QA/QC, clash intelligence and the Saudi Compliance Engine automatically.', ar: 'يشغّل ضبط الجودة وذكاء التعارضات ومحرك الامتثال السعودي تلقائيًا.' } },
+    { who: { en: 'Project Director', ar: 'مدير المشروع' }, step: { en: 'Reviews an Intelligence Index of 91 with financial exposure quantified in SAR.', ar: 'يراجع مؤشر ذكاء بقيمة 91 مع تحديد التعرض المالي بالريال.' } },
+    { who: { en: 'Project Director', ar: 'مدير المشروع' }, step: { en: 'Issues auto-drafted RFIs and an executive report — a decision in one sitting.', ar: 'يصدر طلبات معلومات وتقريرًا تنفيذيًا مولّدًا تلقائيًا — قرار في جلسة واحدة.' } },
+  ]
+
+  // Technology architecture layers (top → bottom)
+  const techLayers = [
+    { titleKey: 'inv.layerApp', itemsKey: 'inv.layerAppItems', tone: 'border-electric-500/40 bg-electric-500/10' },
+    { titleKey: 'inv.layerEngine', itemsKey: 'inv.layerEngineItems', tone: 'border-cyan-500/30 bg-cyan-500/10' },
+    { titleKey: 'inv.layerIngest', itemsKey: 'inv.layerIngestItems', tone: 'border-white/10 bg-navy-950/50' },
+  ]
+  const techInputs = ['Autodesk Revit', 'Navisworks', 'IFC', 'BOQ (Excel)', 'Specs (PDF)']
+
+  // Financial projections — clearly marked, illustrative, pre-revenue
+  const projections = [
+    { year: 'Y1', customers: 3, arr: 0.6 },
+    { year: 'Y2', customers: 12, arr: 3.0 },
+    { year: 'Y3', customers: 30, arr: 9.0 },
+  ]
+  const maxArr = 9
+
+  // Why incumbents can't easily replicate
+  const replicate: { l: L; d: L }[] = [
+    { l: { en: 'Innovator’s dilemma', ar: 'معضلة المبتكر' }, d: { en: 'Incumbents monetize authoring tools; a neutral intelligence & compliance layer creates channel conflict they are structurally slow to pursue.', ar: 'يعتمد اللاعبون الكبار على بيع أدوات التأليف؛ وطبقة ذكاء وامتثال محايدة تخلق تعارضًا مع قنواتهم يجعل ملاحقتها بطيئة هيكليًا.' } },
+    { l: { en: 'Saudi regulatory depth', ar: 'عمق التنظيم السعودي' }, d: { en: 'SBC, Civil Defense, Balady and Energy codes encoded as a living knowledge base — local expertise, not a global roadmap priority.', ar: 'كود البناء السعودي والدفاع المدني وبلدي والطاقة مُرمّزة كقاعدة معرفة حيّة — خبرة محلية وليست أولوية في خارطة طريق عالمية.' } },
+    { l: { en: 'Data sovereignty', ar: 'سيادة البيانات' }, d: { en: 'KSA-hosted and PDPL/SDAIA-aligned from day one — global vendors localize slowly.', ar: 'مستضافة داخل المملكة ومتوافقة مع نظام حماية البيانات وسدايا منذ اليوم الأول — والمورّدون العالميون يبطئون في التوطين.' } },
+    { l: { en: 'Vendor neutrality', ar: 'الحياد التقني' }, d: { en: 'STRUX works across Revit, IFC and Navisworks; an Autodesk-owned layer would lock customers in, which the market resists.', ar: 'تعمل STRUX عبر Revit وIFC وNavisworks؛ بينما أي طبقة مملوكة لـAutodesk ستقيّد العملاء، وهو ما يقاومه السوق.' } },
+    { l: { en: 'Compounding local dataset', ar: 'بيانات محلية متراكمة' }, d: { en: 'A Saudi-specific portfolio learning network improves with every project — a data moat that cannot be bought.', ar: 'شبكة تعلّم من المحافظ خاصة بالسعودية تتحسّن مع كل مشروع — خندق بيانات لا يمكن شراؤه.' } },
+    { l: { en: 'Local GTM & trust', ar: 'الحضور المحلي والثقة' }, d: { en: 'Arabic-native product and on-the-ground relationships with KSA developers and authorities.', ar: 'منتج عربي أصيل وعلاقات ميدانية مع المطوّرين والجهات في المملكة.' } },
+  ]
+
+  // Product roadmap — Now / Next / Later
+  const roadmap: { phaseKey: string; items: L[]; tone: string }[] = [
+    {
+      phaseKey: 'inv.phaseNow',
+      tone: 'border-electric-500/40',
+      items: [
+        { en: 'IFC/Revit ingestion + QA/QC engine', ar: 'استيعاب IFC/Revit + محرك ضبط الجودة' },
+        { en: 'Clash intelligence with cost & delay scoring', ar: 'ذكاء التعارضات مع تقدير الكلفة والتأخير' },
+        { en: 'Saudi Compliance Engine v1 (SBC, Civil Defense)', ar: 'محرك الامتثال السعودي ـ الإصدار 1 (كود البناء، الدفاع المدني)' },
+        { en: 'Executive reports + Intelligence Index™', ar: 'التقارير التنفيذية + مؤشر الذكاء™' },
+      ],
+    },
+    {
+      phaseKey: 'inv.phaseNext',
+      tone: 'border-cyan-500/30',
+      items: [
+        { en: 'Autodesk ACC & Navisworks connectors', ar: 'موصلات Autodesk ACC وNavisworks' },
+        { en: 'STRUX Copilot grounded on project data', ar: 'مساعد STRUX معتمد على بيانات المشروع' },
+        { en: 'BOQ ↔ model auto-reconciliation', ar: 'مطابقة تلقائية بين جدول الكميات والنموذج' },
+        { en: 'Compliance Engine v2 (Balady, Energy)', ar: 'محرك الامتثال ـ الإصدار 2 (بلدي، الطاقة)' },
+      ],
+    },
+    {
+      phaseKey: 'inv.phaseLater',
+      tone: 'border-white/10',
+      items: [
+        { en: 'Portfolio learning network', ar: 'شبكة التعلّم من المحافظ' },
+        { en: 'Government & Etimad integrations', ar: 'تكاملات حكومية ومع منصة اعتماد' },
+        { en: 'Predictive risk & cost forecasting', ar: 'التنبؤ بالمخاطر والتكاليف' },
+        { en: 'GCC expansion (UAE, Qatar)', ar: 'التوسع الخليجي (الإمارات، قطر)' },
+      ],
+    },
+  ]
+
   const cell = (v: Cell) =>
     v === true ? (
       <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-300">
@@ -236,6 +305,57 @@ export default function Investor() {
         </Card>
       </Reveal>
 
+      {/* 5 — Customer journey */}
+      <Reveal>
+        <Card>
+          <SectionHeader tag={t('inv.journeyTag')} title={t('inv.journeyTitle')} />
+          <p className="-mt-3 mb-4 text-sm text-silver-400">{t('inv.journeySub')}</p>
+          <ol className="relative space-y-3 border-s border-white/10 ps-5">
+            {journey.map((j, i) => (
+              <li key={i} className="relative">
+                <span className="absolute -start-[26px] flex h-6 w-6 items-center justify-center rounded-full bg-electric-500/20 text-xs font-bold text-electric-300">
+                  {i + 1}
+                </span>
+                <div className="rounded-xl border border-white/5 bg-navy-950/40 p-3">
+                  <Badge tone="blue" className="mb-1">{tx(j.who)}</Badge>
+                  <p className="text-sm text-silver-200">{tx(j.step)}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </Card>
+      </Reveal>
+
+      {/* 6 — Technology architecture */}
+      <Reveal>
+        <Card>
+          <SectionHeader tag={t('inv.techTag')} title={t('inv.techTitle')} />
+          <p className="-mt-3 mb-4 text-sm text-silver-400">{t('inv.techSub')}</p>
+          <div className="space-y-2">
+            {techLayers.map((layer) => (
+              <div key={layer.titleKey} className={`rounded-xl border p-3.5 ${layer.tone}`}>
+                <div className="text-sm font-bold text-silver-100">{t(layer.titleKey)}</div>
+                <div className="mt-0.5 text-xs text-silver-300">{t(layer.itemsKey)}</div>
+              </div>
+            ))}
+            <div className="flex justify-center py-0.5 text-silver-600">▲</div>
+            <div className="rounded-xl border border-dashed border-white/15 bg-navy-950/30 p-3.5">
+              <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-silver-500">{t('inv.layerData')}</div>
+              <div className="flex flex-wrap gap-2">
+                {techInputs.map((s) => (
+                  <span key={s} className="rounded-lg border border-white/10 bg-navy-900/70 px-3 py-1.5 text-xs font-medium text-silver-300">
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="mt-4 flex items-center gap-2 rounded-lg border border-emerald-500/20 bg-emerald-500/5 px-3 py-2 text-xs font-medium text-emerald-200">
+            <IconShield className="h-4 w-4" /> {t('inv.techResidency')}
+          </div>
+        </Card>
+      </Reveal>
+
       {/* 5 — Business model */}
       <Reveal>
         <Card>
@@ -258,6 +378,38 @@ export default function Investor() {
               </div>
             ))}
           </div>
+        </Card>
+      </Reveal>
+
+      {/* 8 — Financial projections (clearly marked) */}
+      <Reveal>
+        <Card>
+          <div className="flex flex-wrap items-start justify-between gap-2">
+            <SectionHeader tag={t('inv.projTag')} title={t('inv.projTitle')} />
+            <Badge tone="amber">⚠ {t('inv.projBadge')}</Badge>
+          </div>
+          <div className="grid grid-cols-3 gap-4">
+            {projections.map((p) => (
+              <div key={p.year} className="rounded-xl border border-white/5 bg-navy-950/40 p-3 text-center">
+                <div className="text-xs font-semibold text-silver-400">{p.year}</div>
+                <div className="mt-2 flex h-28 items-end justify-center">
+                  <div
+                    className="w-10 rounded-t-md bg-gradient-to-t from-electric-600 to-cyan-400 transition-all duration-700"
+                    style={{ height: `${(p.arr / maxArr) * 100}%` }}
+                    title={`SAR ${p.arr}M`}
+                  />
+                </div>
+                <div className="mt-2 text-sm font-bold text-silver-100">SAR {p.arr}M</div>
+                <div className="text-[11px] text-silver-500">{t('inv.projArr')}</div>
+                <div className="mt-1 text-xs font-semibold text-electric-300">
+                  {p.customers} <span className="font-normal text-silver-500">{t('inv.projCustomers')}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="mt-4 rounded-lg border border-amber-500/20 bg-amber-500/5 p-3 text-xs leading-relaxed text-amber-100/90">
+            {t('inv.projNote')}
+          </p>
         </Card>
       </Reveal>
 
@@ -314,6 +466,26 @@ export default function Investor() {
         </Card>
       </Reveal>
 
+      {/* 11 — Why incumbents can't easily replicate */}
+      <Reveal>
+        <Card>
+          <SectionHeader tag={t('inv.replicateTag')} title={t('inv.replicateTitle')} />
+          <div className="grid gap-3 sm:grid-cols-2">
+            {replicate.map((r) => (
+              <div key={r.l.en} className="rounded-xl border border-white/5 bg-navy-950/40 p-4">
+                <div className="flex items-center gap-2">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-electric-500/15 text-electric-300">
+                    <IconShield className="h-3.5 w-3.5" />
+                  </span>
+                  <h4 className="text-sm font-bold text-silver-100">{tx(r.l)}</h4>
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-silver-300">{tx(r.d)}</p>
+              </div>
+            ))}
+          </div>
+        </Card>
+      </Reveal>
+
       {/* 8 — Intelligence Index */}
       <Reveal>
         <div>
@@ -333,6 +505,30 @@ export default function Investor() {
                   <IconCheck className="h-3 w-3" />
                 </span>
                 {tx(w)}
+              </div>
+            ))}
+          </div>
+        </Card>
+      </Reveal>
+
+      {/* 14 — Product roadmap */}
+      <Reveal>
+        <Card>
+          <SectionHeader tag={t('inv.prodRoadTag')} title={t('inv.prodRoadTitle')} />
+          <div className="grid gap-4 lg:grid-cols-3">
+            {roadmap.map((phase) => (
+              <div key={phase.phaseKey} className={`rounded-xl border ${phase.tone} bg-navy-950/40 p-4`}>
+                <div className="mb-3 text-sm font-bold text-silver-100">{t(phase.phaseKey)}</div>
+                <ul className="space-y-2">
+                  {phase.items.map((it) => (
+                    <li key={it.en} className="flex items-start gap-2 text-sm text-silver-300">
+                      <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-electric-500/15 text-electric-300">
+                        <IconCheck className="h-2.5 w-2.5" />
+                      </span>
+                      {tx(it)}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>

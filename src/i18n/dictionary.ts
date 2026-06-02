@@ -252,10 +252,10 @@ export const dict: Dict = {
   'land.ctaPrimary': { en: 'Launch Live Demo', ar: 'تشغيل العرض المباشر' },
   'land.ctaSecondary': { en: 'For Investors', ar: 'للمستثمرين' },
   'land.trusted': { en: 'Built for the Kingdom’s largest developers & giga-projects', ar: 'مصمم لأكبر المطورين والمشاريع العملاقة في المملكة' },
-  'land.statProjects': { en: 'Projects analysed', ar: 'مشاريع تم تحليلها' },
-  'land.statElements': { en: 'BIM elements processed', ar: 'عناصر BIM تمت معالجتها' },
-  'land.statSaved': { en: 'Rework cost avoided', ar: 'تكلفة إعادة عمل تم تفاديها' },
-  'land.statCompliance': { en: 'Avg compliance lift', ar: 'متوسط تحسّن الامتثال' },
+  'land.statModules': { en: 'Intelligence modules', ar: 'وحدات ذكاء' },
+  'land.statDisciplines': { en: 'Engineering disciplines', ar: 'تخصصات هندسية' },
+  'land.statCodes': { en: 'Saudi codes covered', ar: 'أكواد سعودية مغطّاة' },
+  'land.statResidency': { en: 'KSA data residency', ar: 'استضافة البيانات داخل المملكة' },
   'land.featuresTitle': { en: 'One intelligence layer. Seven decisions.', ar: 'طبقة ذكاء واحدة. سبعة قرارات.' },
   'land.featuresSub': { en: 'Everything a contractor, consultant, BIM manager or owner needs to de-risk a project.', ar: 'كل ما يحتاجه المقاول والاستشاري ومدير BIM والمالك لتقليل مخاطر المشروع.' },
   'land.howTitle': { en: 'From model to decision in minutes', ar: 'من النموذج إلى القرار في دقائق' },
@@ -341,10 +341,10 @@ export const dict: Dict = {
 
   // 1 Problem
   'inv.problemTag': { en: '01 · The Problem', ar: '01 · المشكلة' },
-  'inv.problemTitle': { en: 'Engineering data hides expensive risk', ar: 'البيانات الهندسية تُخفي مخاطر مكلفة' },
+  'inv.problemTitle': { en: 'Engineering data hides expensive, avoidable risk', ar: 'البيانات الهندسية تُخفي مخاطر مكلفة يمكن تفاديها' },
   'inv.problemDesc': {
-    en: 'Construction projects suffer from cost overruns, coordination failures, BIM governance gaps, rework and compliance risk — and the warning signs are buried inside models, BOQs and specifications nobody can read at scale.',
-    ar: 'تعاني مشاريع الإنشاءات من تجاوزات التكلفة، وإخفاقات التنسيق، وفجوات حوكمة BIM، وإعادة العمل، ومخاطر الامتثال — ومؤشرات الإنذار مدفونة داخل النماذج وجداول الكميات والمواصفات التي يصعب تحليلها على نطاق واسع.',
+    en: 'Saudi construction runs on Revit, Navisworks and IFC models that no executive can read at scale. Cost overruns, coordination failures, BIM governance gaps, rework and compliance exposure stay invisible until they become change orders and delays. The data exists — the intelligence layer does not.',
+    ar: 'يعتمد قطاع الإنشاءات السعودي على نماذج Revit وNavisworks وIFC التي يصعب على الإدارة قراءتها على نطاق واسع. تبقى تجاوزات التكلفة وإخفاقات التنسيق وفجوات حوكمة BIM وإعادة العمل ومخاطر الامتثال غير مرئية حتى تتحول إلى أوامر تغيير وتأخيرات. البيانات موجودة — لكن طبقة الذكاء غائبة.',
   },
   'inv.stat1': { en: 'Rework consumes up to 5–15% of total construction costs.', ar: 'تستهلك إعادة العمل ما يصل إلى 5–15% من إجمالي تكاليف الإنشاء.' },
   'inv.stat2': { en: 'Every BIM model, BOQ and specification document contains hidden risks.', ar: 'كل نموذج BIM وجدول كميات ووثيقة مواصفات يحتوي على مخاطر خفية.' },
@@ -355,8 +355,8 @@ export const dict: Dict = {
   'inv.solOS': { en: 'The Operating System for Construction Intelligence', ar: 'نظام التشغيل للذكاء الهندسي في الإنشاءات' },
 
   // 3 Why now
-  'inv.whyNowTag': { en: '03 · Why Now?', ar: '03 · لماذا الآن؟' },
-  'inv.whyNowTitle': { en: 'The market is ready in a way it was not five years ago', ar: 'السوق جاهز اليوم بشكل لم يكن متاحًا قبل خمس سنوات' },
+  'inv.whyNowTag': { en: '03 · Why Now', ar: '03 · لماذا الآن' },
+  'inv.whyNowTitle': { en: 'A rare alignment of demand, regulation and technology', ar: 'تقاطع نادر بين الطلب والتنظيم والتقنية' },
   'inv.whyNowClose': { en: 'The market is ready now in a way it was not five years ago.', ar: 'السوق جاهز الآن بشكل لم يكن عليه قبل خمس سنوات.' },
 
   // 4 Market
@@ -365,33 +365,73 @@ export const dict: Dict = {
   'inv.tam': { en: 'TAM · GCC construction technology', ar: 'السوق الكلي · تقنية الإنشاءات الخليجية' },
   'inv.sam': { en: 'SAM · KSA BIM & compliance software', ar: 'السوق المتاح · برمجيات BIM والامتثال في السعودية' },
   'inv.som': { en: 'SOM · Serviceable in 3 years', ar: 'السوق القابل للاستحواذ · خلال 3 سنوات' },
-  'inv.marketNote': { en: 'Bottom-up sizing focused on KSA & GCC construction technology — deliberately conservative.', ar: 'تقدير تصاعدي يركّز على تقنية الإنشاءات في السعودية والخليج — مُحافظ عن قصد.' },
+  'inv.marketNote': { en: 'Bottom-up estimates for KSA & GCC construction technology — deliberately conservative, not top-down.', ar: 'تقديرات تصاعدية لتقنية الإنشاءات في السعودية والخليج — محافظة عن قصد وليست تنازلية.' },
 
-  // 5 Business model
-  'inv.bmTag': { en: '05 · Business Model', ar: '05 · نموذج العمل' },
-  'inv.bmTitle': { en: 'Recurring, high-margin SaaS revenue', ar: 'إيرادات برمجيات متكررة وعالية الهامش' },
-  'inv.bmRecurring': { en: '~80% recurring revenue', ar: '~80% إيرادات متكررة' },
+  // 5 Customer journey
+  'inv.journeyTag': { en: '05 · Product in Action', ar: '05 · المنتج أثناء العمل' },
+  'inv.journeyTitle': { en: 'A day with STRUX', ar: 'يوم مع STRUX' },
+  'inv.journeySub': { en: 'How a BIM manager and a project director use STRUX on a live Riyadh tower.', ar: 'كيف يستخدم مدير BIM ومدير المشروع منصة STRUX في برج قائم بالرياض.' },
 
-  // 6 Competitive advantage
-  'inv.compTag': { en: '06 · Competitive Advantage', ar: '06 · الميزة التنافسية' },
+  // 6 Technology architecture
+  'inv.techTag': { en: '06 · Technology Architecture', ar: '06 · البنية التقنية' },
+  'inv.techTitle': { en: 'An intelligence layer, not another viewer', ar: 'طبقة ذكاء، لا عارض آخر' },
+  'inv.techSub': { en: 'STRUX ingests the existing BIM stack and adds intelligence above it — vendor-neutral and KSA-hosted.', ar: 'تستوعب STRUX منظومة BIM الحالية وتضيف الذكاء فوقها — محايدة تجاه المورّد ومستضافة داخل المملكة.' },
+  'inv.layerApp': { en: 'Executive Intelligence', ar: 'الذكاء التنفيذي' },
+  'inv.layerAppItems': { en: 'Dashboards · Smart Reports · Copilot · Intelligence Index™', ar: 'لوحات القيادة · التقارير الذكية · المساعد الذكي · مؤشر الذكاء™' },
+  'inv.layerEngine': { en: 'STRUX Intelligence Engine', ar: 'محرك STRUX للذكاء' },
+  'inv.layerEngineItems': { en: 'AI Risk Detection · Clash Intelligence · Quantity AI · Saudi Compliance Engine', ar: 'كشف المخاطر · ذكاء التعارضات · ذكاء الكميات · محرك الامتثال السعودي' },
+  'inv.layerIngest': { en: 'Ingestion & Normalization', ar: 'الاستيعاب والتوحيد' },
+  'inv.layerIngestItems': { en: 'IFC / Revit parser · BOQ & specification reader · element graph', ar: 'محلّل IFC/Revit · قارئ جداول الكميات والمواصفات · رسم بياني للعناصر' },
+  'inv.layerData': { en: 'Existing BIM Stack (inputs)', ar: 'منظومة BIM الحالية (المدخلات)' },
+  'inv.techResidency': { en: 'KSA cloud · PDPL & SDAIA aligned · vendor-neutral', ar: 'سحابة داخل المملكة · متوافقة مع نظام حماية البيانات وسدايا · محايدة تجاه المورّد' },
+
+  // 7 Business model
+  'inv.bmTag': { en: '07 · Business Model', ar: '07 · نموذج العمل' },
+  'inv.bmTitle': { en: 'Recurring, high-margin SaaS — built to compound', ar: 'برمجيات متكررة عالية الهامش — مبنية للنمو المتراكم' },
+  'inv.bmRecurring': { en: 'Recurring-led model (target)', ar: 'نموذج يقوده الإيراد المتكرر (مستهدف)' },
+
+  // 8 Financial projections
+  'inv.projTag': { en: '08 · Financial Projections', ar: '08 · التوقعات المالية' },
+  'inv.projTitle': { en: 'Illustrative 3-year plan', ar: 'خطة توضيحية لثلاث سنوات' },
+  'inv.projBadge': { en: 'Projections — pre-revenue, illustrative', ar: 'توقعات — قبل تحقيق الإيراد، توضيحية' },
+  'inv.projNote': {
+    en: 'Forward-looking projections only, not actuals or commitments. STRUX is pre-revenue at Pre-Seed; figures illustrate the operating plan this round funds.',
+    ar: 'توقعات مستقبلية فقط، وليست أرقامًا فعلية أو التزامات. STRUX قبل مرحلة الإيراد في جولة ما قبل التأسيس؛ والأرقام توضّح خطة التشغيل التي تموّلها هذه الجولة.',
+  },
+  'inv.projCustomers': { en: 'Paying customers', ar: 'العملاء المدفوعون' },
+  'inv.projArr': { en: 'Projected ARR', ar: 'الإيراد السنوي المتكرر المتوقع' },
+
+  // 9 Competitive advantage
+  'inv.compTag': { en: '09 · Competitive Advantage', ar: '09 · الميزة التنافسية' },
   'inv.compTitle': { en: 'Where STRUX is structurally different', ar: 'أين تختلف STRUX جوهريًا' },
   'inv.colTraditional': { en: 'Traditional Consultancy', ar: 'الاستشارات التقليدية' },
 
-  // 7 Moat
-  'inv.moatTag': { en: '07 · Defensibility & Moat', ar: '07 · الحصانة التنافسية' },
+  // 10 Moat
+  'inv.moatTag': { en: '10 · Defensibility & Moat', ar: '10 · الحصانة التنافسية' },
   'inv.moatTitle': { en: 'Defensibility & Competitive Moat', ar: 'الحصانة والميزة التنافسية الدفاعية' },
   'inv.moatHeadline': { en: 'The more projects STRUX analyzes, the smarter it becomes.', ar: 'كلما حلّلت STRUX مشاريع أكثر، أصبحت أكثر ذكاءً.' },
 
-  // 8 Index section
-  'inv.indexTag': { en: '08 · Signature Metric', ar: '08 · المؤشر المميّز' },
+  // 11 Why incumbents can't replicate
+  'inv.replicateTag': { en: '11 · Defensibility vs Incumbents', ar: '11 · الحصانة أمام المنافسين الكبار' },
+  'inv.replicateTitle': { en: 'Why Autodesk can’t easily replicate STRUX', ar: 'لماذا يصعب على Autodesk تكرار STRUX' },
+
+  // 12 Index section
+  'inv.indexTag': { en: '12 · Signature Metric', ar: '12 · المؤشر المميّز' },
   'inv.indexTitle': { en: 'The STRUX Intelligence Index™', ar: 'مؤشر STRUX للذكاء الهندسي™' },
 
-  // 9 Why STRUX wins
-  'inv.winTag': { en: '09 · Why STRUX Wins', ar: '09 · لماذا تفوز STRUX' },
+  // 13 Why STRUX wins
+  'inv.winTag': { en: '13 · Why STRUX Wins', ar: '13 · لماذا تفوز STRUX' },
   'inv.winTitle': { en: 'Why STRUX wins', ar: 'لماذا تفوز STRUX' },
 
-  // 10 Fundraising
-  'inv.fundTag': { en: '10 · The Round', ar: '10 · الجولة' },
+  // 14 Product roadmap
+  'inv.prodRoadTag': { en: '14 · Product Roadmap', ar: '14 · خارطة طريق المنتج' },
+  'inv.prodRoadTitle': { en: 'Product Roadmap', ar: 'خارطة طريق المنتج' },
+  'inv.phaseNow': { en: 'Now (0–6 months)', ar: 'الآن (0–6 أشهر)' },
+  'inv.phaseNext': { en: 'Next (6–12 months)', ar: 'التالي (6–12 شهرًا)' },
+  'inv.phaseLater': { en: 'Later (12–24 months)', ar: 'لاحقًا (12–24 شهرًا)' },
+
+  // 15 Fundraising
+  'inv.fundTag': { en: '15 · The Round', ar: '15 · الجولة' },
   'inv.fundTitle': { en: 'Current Round — Pre-Seed', ar: 'الجولة الحالية — ما قبل التأسيس' },
   'inv.round': { en: 'Pre-Seed', ar: 'ما قبل التأسيس' },
   'inv.currentRound': { en: 'Current Round', ar: 'الجولة الحالية' },
@@ -400,8 +440,8 @@ export const dict: Dict = {
   'inv.runway': { en: 'Runway', ar: 'المدى التشغيلي' },
   'inv.runwayValue': { en: '18–24 month runway', ar: 'مدى تشغيلي من 18 إلى 24 شهرًا' },
 
-  // 11 Roadmap
-  'inv.roadmapTag': { en: '11 · Funding Roadmap', ar: '11 · خارطة طريق التمويل' },
+  // 16 Roadmap
+  'inv.roadmapTag': { en: '16 · Funding Roadmap', ar: '16 · خارطة طريق التمويل' },
   'inv.roadmapTitle': { en: 'Future Funding Roadmap', ar: 'خارطة طريق التمويل المستقبلية' },
   'inv.stagePre': { en: 'Pre-Seed', ar: 'ما قبل التأسيس' },
   'inv.stageSeed': { en: 'Seed', ar: 'التأسيس' },

@@ -18,15 +18,16 @@ import {
   IconSparkle,
 } from '../components/ui/Icons'
 
+// Market context (giga-projects & frameworks STRUX is built for) — not customer claims.
 const partners = [
   'NEOM',
   'Red Sea Global',
   'ROSHN',
   'Qiddiya',
   'Diriyah Gate',
-  'Ministry of Health',
-  'Saudi Aramco',
-  'PIF',
+  'King Salman Park',
+  'Vision 2030',
+  'Saudi Building Code',
 ]
 
 const modules = [
@@ -168,10 +169,10 @@ export default function Landing() {
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
           {[
-            { value: <CountUp to={18} />, label: t('land.statProjects') },
-            { value: <><CountUp to={2.4} decimals={1} />M+</>, label: t('land.statElements') },
-            { value: <>SAR <CountUp to={42} />M</>, label: t('land.statSaved') },
-            { value: <>+<CountUp to={14} />%</>, label: t('land.statCompliance') },
+            { value: <CountUp to={7} />, label: t('land.statModules') },
+            { value: <CountUp to={6} />, label: t('land.statDisciplines') },
+            { value: <CountUp to={6} />, label: t('land.statCodes') },
+            { value: <><CountUp to={100} />%</>, label: t('land.statResidency') },
           ].map((s, i) => (
             <Reveal key={i} delay={i * 80}>
               <div className="strux-card p-6 text-center">
