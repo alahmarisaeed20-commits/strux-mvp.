@@ -1,6 +1,7 @@
 import { lazy, Suspense, useState } from 'react'
 import { Card, Badge, SAR, toneFor } from '../components/ui/primitives'
 import { IconCube, IconLayers, IconClash, IconBuilding, IconBolt } from '../components/ui/Icons'
+import { InlineLoader } from '../components/Loader'
 import { useI18n } from '../i18n'
 import { clashes } from '../data/mock'
 import type { ClashMarker, Layers } from '../components/three/BIMScene'
@@ -56,16 +57,7 @@ export default function Viewer({ embedded = false }: { embedded?: boolean }) {
         {/* 3D canvas */}
         <Card className="relative overflow-hidden p-0 lg:col-span-3">
           <div className="relative h-[560px] w-full">
-            <Suspense
-              fallback={
-                <div className="flex h-full w-full items-center justify-center bg-navy-950">
-                  <div className="flex flex-col items-center gap-3 text-silver-400">
-                    <div className="h-10 w-10 animate-spin rounded-full border-2 border-electric-500/30 border-t-electric-500" />
-                    <span className="text-sm">{t('3d.loading')}</span>
-                  </div>
-                </div>
-              }
-            >
+            <Suspense fallback={<InlineLoader />}>
               <BIMScene
                 layers={layers}
                 markers={markers}

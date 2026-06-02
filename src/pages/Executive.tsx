@@ -10,6 +10,7 @@ import {
 } from 'recharts'
 import { Card, Badge, ScoreRing, toneFor } from '../components/ui/primitives'
 import { CountUp } from '../components/ui/motion'
+import Sparkline from '../components/ui/Sparkline'
 import { useI18n } from '../i18n'
 import { IconBolt, IconClash, IconShield, IconReport, IconArrowRight } from '../components/ui/Icons'
 import { Link } from 'react-router-dom'
@@ -48,24 +49,35 @@ const exposure = [
 ]
 
 function Kpi({
+  id,
   label,
   children,
   icon: Icon,
   tone,
+  color,
+  series,
 }: {
+  id: string
   label: string
   children: React.ReactNode
   icon: (p: { className?: string }) => JSX.Element
   tone: string
+  color: string
+  series: number[]
 }) {
   return (
-    <Card className="flex items-center gap-4">
-      <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-white/5 ${tone}`}>
-        <Icon className="h-6 w-6" />
+    <Card className="transition hover:-translate-y-0.5 hover:border-electric-500/30">
+      <div className="flex items-center gap-3">
+        <div className={`flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 ${tone}`}>
+          <Icon className="h-5 w-5" />
+        </div>
+        <div>
+          <div className="text-2xl font-bold tracking-tight text-silver-100">{children}</div>
+          <div className="text-xs font-medium text-silver-400">{label}</div>
+        </div>
       </div>
-      <div>
-        <div className="text-2xl font-bold tracking-tight text-silver-100">{children}</div>
-        <div className="text-xs font-medium text-silver-400">{label}</div>
+      <div className="mt-3 opacity-80">
+        <Sparkline id={id} data={series} color={color} height={30} />
       </div>
     </Card>
   )
@@ -83,16 +95,16 @@ export default function Executive() {
 
       {/* KPIs */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <Kpi label={t('exec.portfolioHealth')} icon={IconBolt} tone="text-emerald-300">
+        <Kpi id="eh" label={t('exec.portfolioHealth')} icon={IconBolt} tone="text-emerald-300" color="#22c55e" series={[81, 84, 86, 88, 90, 92]}>
           <CountUp to={dashboardKpis.bimHealthScore} suffix="%" />
         </Kpi>
-        <Kpi label={t('exec.financialExposure')} icon={IconClash} tone="text-amber-300">
+        <Kpi id="ef" label={t('exec.financialExposure')} icon={IconClash} tone="text-amber-300" color="#f59e0b" series={[2.1, 1.9, 1.7, 1.6, 1.45, 1.36]}>
           SAR <CountUp to={1.36} decimals={2} />M
         </Kpi>
-        <Kpi label={t('exec.reworkAvoided')} icon={IconShield} tone="text-electric-300">
+        <Kpi id="er" label={t('exec.reworkAvoided')} icon={IconShield} tone="text-electric-300" color="#2f6bff" series={[12, 19, 26, 33, 38, 42]}>
           SAR <CountUp to={42} />M
         </Kpi>
-        <Kpi label={t('exec.scheduleRisk')} icon={IconReport} tone="text-red-300">
+        <Kpi id="es" label={t('exec.scheduleRisk')} icon={IconReport} tone="text-red-300" color="#ef4444" series={[58, 52, 47, 41, 37, 34]}>
           <CountUp to={34} /> {t('3d.days')}
         </Kpi>
       </div>

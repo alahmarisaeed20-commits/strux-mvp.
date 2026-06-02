@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { NavLink, Outlet, useLocation } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { Brand } from './Brand'
 import { useI18n } from '../i18n'
 import {
@@ -41,10 +41,22 @@ const titleKey: Record<string, string> = {
 
 export default function Layout() {
   const location = useLocation()
+  const navigate = useNavigate()
   const { t, toggle, lang } = useI18n()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [demo, setDemo] = useState(() => localStorage.getItem('strux.demo') === '1')
   const segment = location.pathname.split('/')[2] ?? 'dashboard'
   const title = t(titleKey[segment] ?? 'page.dashboard')
+
+  useEffect(() => {
+    localStorage.setItem('strux.demo', demo ? '1' : '0')
+  }, [demo])
+
+  function toggleDemo() {
+    const next = !demo
+    setDemo(next)
+    if (next) navigate('/app/investor')
+  }
 
   return (
     <div className="flex min-h-screen bg-navy-950 bg-grid-faint bg-[size:40px_40px]">
@@ -124,6 +136,19 @@ export default function Layout() {
             />
           </div>
 
+          {/* Investor demo mode toggle */}
+          <button
+            onClick={toggleDemo}
+            className={`hidden items-center gap-1.5 rounded-lg border px-3 py-2 text-xs font-bold transition sm:flex ${
+              demo
+                ? 'border-amber-400/40 bg-amber-500/15 text-amber-300'
+                : 'border-white/10 bg-navy-900/60 text-silver-300 hover:text-white'
+            }`}
+            title={t('mode.demo')}
+          >
+            <IconBolt className="h-4 w-4" /> {t('mode.demo')}
+          </button>
+
           {/* Language toggle */}
           <button
             onClick={toggle}
@@ -133,19 +158,30 @@ export default function Layout() {
             {t('lang.toggle')}
           </button>
 
-          <button className="relative rounded-lg border border-white/10 bg-navy-900/60 p-2 text-silver-300 hover:text-silver-100">
+          <button className="relative hidden rounded-lg border border-white/10 bg-navy-900/60 p-2 text-silver-300 hover:text-silver-100 sm:block">
             <IconBell className="h-[18px] w-[18px]" />
             <span className="absolute end-1.5 top-1.5 h-2 w-2 rounded-full bg-electric-400" />
           </button>
 
-          <div className="hidden items-center gap-1.5 rounded-lg border border-electric-500/30 bg-electric-500/10 px-3 py-2 text-xs font-semibold text-electric-300 sm:flex">
+          <div className="hidden items-center gap-1.5 rounded-lg border border-electric-500/30 bg-electric-500/10 px-3 py-2 text-xs font-semibold text-electric-300 lg:flex">
             <IconSparkle className="h-4 w-4" />
             {t('top.aiOnline')}
           </div>
         </header>
 
+        {/* Investor demo banner */}
+        {demo && (
+          <div className="flex items-center justify-center gap-2 border-b border-amber-400/20 bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent px-4 py-2 text-xs font-medium text-amber-200">
+            <IconSparkle className="h-3.5 w-3.5" />
+            {t('mode.demoBanner')}
+            <button onClick={() => setDemo(false)} className="ms-2 rounded px-1.5 py-0.5 font-bold text-amber-300 hover:bg-amber-500/10">
+              ✕
+            </button>
+          </div>
+        )}
+
         <main className="flex-1 p-4 lg:p-6">
-          <div className="mx-auto max-w-7xl animate-fadeup">
+          <div key={location.pathname} className="mx-auto max-w-7xl animate-fadeup">
             <Outlet />
           </div>
         </main>

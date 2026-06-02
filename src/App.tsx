@@ -1,5 +1,7 @@
+import { useEffect, useState } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/Layout'
+import { Splash } from './components/Loader'
 import Landing from './pages/Landing'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
@@ -12,8 +14,29 @@ import Viewer from './pages/Viewer'
 import Settings from './pages/Settings'
 
 export default function App() {
+  const [booting, setBooting] = useState(true)
+  const [fading, setFading] = useState(false)
+
+  useEffect(() => {
+    const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+    const fadeAt = reduce ? 200 : 1200
+    const doneAt = reduce ? 400 : 1700
+    const t1 = setTimeout(() => setFading(true), fadeAt)
+    const t2 = setTimeout(() => setBooting(false), doneAt)
+    return () => {
+      clearTimeout(t1)
+      clearTimeout(t2)
+    }
+  }, [])
+
   return (
-    <Routes>
+    <>
+      {booting && (
+        <div className={`transition-opacity duration-500 ${fading ? 'opacity-0' : 'opacity-100'}`}>
+          <Splash />
+        </div>
+      )}
+      <Routes>
       <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
       <Route path="/app" element={<Layout />}>
@@ -28,6 +51,7 @@ export default function App() {
         <Route path="settings" element={<Settings />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+      </Routes>
+    </>
   )
 }

@@ -323,6 +323,14 @@ export const dict: Dict = {
 
   // Investor toggle (topbar)
   'mode.investorOn': { en: 'Investor Mode', ar: 'وضع المستثمر' },
+  'mode.demo': { en: 'Investor Demo', ar: 'عرض المستثمر' },
+  'mode.demoBanner': {
+    en: 'Investor Demo Mode — illustrative figures, narrated highlights enabled.',
+    ar: 'وضع عرض المستثمر — أرقام توضيحية مع إبراز النقاط الرئيسية.',
+  },
+
+  // Loading
+  'load.tagline': { en: 'Initializing engineering intelligence…', ar: 'جارٍ تهيئة الذكاء الهندسي…' },
 }
 
 export function translate(key: string, lang: Lang): string {
