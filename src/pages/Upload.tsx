@@ -11,6 +11,7 @@ import {
   IconBolt,
   IconArrowRight,
 } from '../components/ui/Icons'
+import { useI18n } from '../i18n'
 import { acceptedFiles, pipelineStages } from '../data/mock'
 
 const iconMap: Record<string, (p: { className?: string }) => JSX.Element> = {
@@ -20,10 +21,18 @@ const iconMap: Record<string, (p: { className?: string }) => JSX.Element> = {
   doc: IconDoc,
 }
 
+const fileKey: Record<string, string> = {
+  IFC: 'file.ifc',
+  Revit: 'file.revit',
+  BOQ: 'file.boq',
+  Specs: 'file.specs',
+}
+
 type Phase = 'idle' | 'processing' | 'done'
 
 export default function Upload() {
   const navigate = useNavigate()
+  const { t } = useI18n()
   const [staged, setStaged] = useState<string[]>(['IFC', 'Revit', 'BOQ'])
   const [phase, setPhase] = useState<Phase>('idle')
   const [stage, setStage] = useState(0)
@@ -54,17 +63,15 @@ export default function Upload() {
       {/* Upload column */}
       <div className="space-y-4 lg:col-span-2">
         <Card>
-          <h2 className="text-lg font-semibold tracking-tight text-silver-100">Upload BIM &amp; Project Files</h2>
-          <p className="mt-0.5 text-sm text-silver-400">
-            STRUX reads your models on top of Autodesk/Revit — nothing is replaced.
-          </p>
+          <h2 className="text-lg font-semibold tracking-tight text-silver-100">{t('up.title')}</h2>
+          <p className="mt-0.5 text-sm text-silver-400">{t('up.sub')}</p>
 
           <label className="mt-5 flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-white/10 bg-navy-950/40 px-6 py-10 text-center transition hover:border-electric-500/50 hover:bg-electric-500/5">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-electric-500/10 text-electric-300">
               <IconUpload className="h-6 w-6" />
             </div>
-            <span className="mt-3 text-sm font-semibold text-silver-100">Drag &amp; drop files here</span>
-            <span className="mt-1 text-xs text-silver-500">or click to browse · IFC, RVT, XLSX, PDF (max 2 GB)</span>
+            <span className="mt-3 text-sm font-semibold text-silver-100">{t('up.drop')}</span>
+            <span className="mt-1 text-xs text-silver-500">{t('up.browse')}</span>
             <input type="file" multiple className="hidden" />
           </label>
 
@@ -87,7 +94,7 @@ export default function Upload() {
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="text-sm font-semibold text-silver-100">
-                      {f.label} <span className="text-xs font-normal text-silver-500">{f.ext}</span>
+                      {t(fileKey[f.type])} <span className="text-xs font-normal text-silver-500">{f.ext}</span>
                     </div>
                     <div className="truncate text-xs text-silver-400">{f.desc}</div>
                   </div>
@@ -109,10 +116,10 @@ export default function Upload() {
             className="strux-btn-primary mt-5 w-full"
           >
             {phase === 'processing' ? (
-              'Analyzing…'
+              t('up.analyzing')
             ) : (
               <>
-                <IconBolt className="h-4 w-4" /> Run STRUX AI Analysis
+                <IconBolt className="h-4 w-4" /> {t('up.run')}
               </>
             )}
           </button>
@@ -124,12 +131,12 @@ export default function Upload() {
         <Card className="h-full">
           <div className="mb-5 flex items-center justify-between">
             <div>
-              <h3 className="text-base font-semibold text-silver-100">AI Processing Pipeline</h3>
-              <p className="text-xs text-silver-400">Riyadh Mixed-Use Tower · Federated model v12</p>
+              <h3 className="text-base font-semibold text-silver-100">{t('up.pipeline')}</h3>
+              <p className="text-xs text-silver-400">Riyadh Mixed-Use Tower · v12</p>
             </div>
-            {phase === 'idle' && <Badge tone="gray">Awaiting input</Badge>}
-            {phase === 'processing' && <Badge tone="blue">Processing…</Badge>}
-            {phase === 'done' && <Badge tone="green">Complete</Badge>}
+            {phase === 'idle' && <Badge tone="gray">{t('up.awaiting')}</Badge>}
+            {phase === 'processing' && <Badge tone="blue">{t('up.processing')}</Badge>}
+            {phase === 'done' && <Badge tone="green">{t('up.complete')}</Badge>}
           </div>
 
           <div className="space-y-2">
@@ -165,7 +172,7 @@ export default function Upload() {
                           isDone || isActive ? 'text-silver-100' : 'text-silver-400'
                         }`}
                       >
-                        {s.label}
+                        {t(`pl.${s.key}`)}
                       </span>
                       {isActive && (
                         <span className="flex gap-1">
@@ -181,7 +188,7 @@ export default function Upload() {
                     </div>
                     <div className="truncate text-xs text-silver-400">{s.detail}</div>
                   </div>
-                  {isDone && <span className="text-xs font-semibold text-emerald-300">Done</span>}
+                  {isDone && <span className="text-xs font-semibold text-emerald-300">{t('up.done')}</span>}
                 </div>
               )
             })}
@@ -191,22 +198,18 @@ export default function Upload() {
             <div className="mt-5 animate-fadeup rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-4">
               <div className="flex items-center justify-between gap-4">
                 <div>
-                  <h4 className="text-sm font-semibold text-silver-100">Analysis complete</h4>
-                  <p className="text-xs text-silver-400">
-                    48,210 elements · 72 issues · 6 clashes · 91% compliance. Smart report ready.
-                  </p>
+                  <h4 className="text-sm font-semibold text-silver-100">{t('up.analysisComplete')}</h4>
+                  <p className="text-xs text-silver-400">{t('up.resultSummary')}</p>
                 </div>
                 <button onClick={() => navigate('/app/analysis')} className="strux-btn-primary shrink-0">
-                  View Results <IconArrowRight className="h-4 w-4" />
+                  {t('up.viewResults')} <IconArrowRight className="h-4 w-4 rtl:-scale-x-100" />
                 </button>
               </div>
             </div>
           )}
 
           {phase === 'idle' && (
-            <p className="mt-5 text-center text-xs text-silver-500">
-              Select your files and run the analysis to watch the STRUX engine work.
-            </p>
+            <p className="mt-5 text-center text-xs text-silver-500">{t('up.idleHint')}</p>
           )}
         </Card>
       </div>

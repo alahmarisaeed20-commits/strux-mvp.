@@ -1,28 +1,30 @@
 import { Link } from 'react-router-dom'
 import { Card, Badge, ProgressBar, toneFor } from '../components/ui/primitives'
 import { IconArrowRight, IconBuilding, IconUpload, IconBolt, IconShield } from '../components/ui/Icons'
+import { useI18n } from '../i18n'
 import { projects } from '../data/mock'
 
 export default function Projects() {
+  const { t } = useI18n()
   return (
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h2 className="text-lg font-semibold tracking-tight text-silver-100">Project Workspace</h2>
-          <p className="text-sm text-silver-400">{projects.length} active projects · sorted by risk exposure</p>
+          <h2 className="text-lg font-semibold tracking-tight text-silver-100">{t('page.projects')}</h2>
+          <p className="text-sm text-silver-400">{projects.length} {t('proj.subtitle')}</p>
         </div>
         <Link to="/app/upload" className="strux-btn-primary self-start">
-          <IconUpload className="h-4 w-4" /> Upload New Model
+          <IconUpload className="h-4 w-4" /> {t('proj.uploadNew')}
         </Link>
       </div>
 
       {/* Summary band */}
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         {[
-          { label: 'Portfolio Value', value: 'SAR 5.7B', icon: IconBuilding },
-          { label: 'Avg BIM Score', value: '88%', icon: IconBolt },
-          { label: 'Open Issues', value: '247', icon: IconBolt },
-          { label: 'Avg Compliance', value: '86%', icon: IconShield },
+          { label: t('proj.portfolioValue'), value: 'SAR 5.7B', icon: IconBuilding },
+          { label: t('proj.avgBim'), value: '88%', icon: IconBolt },
+          { label: t('proj.openIssues'), value: '247', icon: IconBolt },
+          { label: t('proj.avgCompliance'), value: '86%', icon: IconShield },
         ].map((s) => (
           <Card key={s.label} className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-electric-500/10 text-electric-300">
@@ -55,32 +57,32 @@ export default function Projects() {
                   </p>
                 </div>
               </div>
-              <Badge tone={toneFor(p.riskLevel)}>{p.riskLevel} risk</Badge>
+              <Badge tone={toneFor(p.riskLevel)}>{p.riskLevel} {t('common.risk')}</Badge>
             </div>
 
             {/* Metrics */}
             <div className="grid grid-cols-4 gap-2 border-y border-white/5 py-3 text-center">
               <div>
                 <div className="text-lg font-bold text-silver-100">{p.bimScore}%</div>
-                <div className="text-[10px] uppercase tracking-wide text-silver-500">BIM Score</div>
+                <div className="text-[10px] uppercase tracking-wide text-silver-500">{t('common.bimScore')}</div>
               </div>
               <div>
                 <div className="text-lg font-bold text-silver-100">{p.issues}</div>
-                <div className="text-[10px] uppercase tracking-wide text-silver-500">Issues</div>
+                <div className="text-[10px] uppercase tracking-wide text-silver-500">{t('common.issues')}</div>
               </div>
               <div>
                 <div className="text-lg font-bold text-red-300">{p.highRisk}</div>
-                <div className="text-[10px] uppercase tracking-wide text-silver-500">High Risk</div>
+                <div className="text-[10px] uppercase tracking-wide text-silver-500">{t('proj.highRisk')}</div>
               </div>
               <div>
                 <div className="text-lg font-bold text-silver-100">{p.compliance}%</div>
-                <div className="text-[10px] uppercase tracking-wide text-silver-500">Compliance</div>
+                <div className="text-[10px] uppercase tracking-wide text-silver-500">{t('dash.compliance')}</div>
               </div>
             </div>
 
             <div>
               <div className="mb-1 flex items-center justify-between text-xs">
-                <span className="text-silver-400">Project progress</span>
+                <span className="text-silver-400">{t('proj.progress')}</span>
                 <span className="font-semibold text-silver-200">{p.progress}%</span>
               </div>
               <ProgressBar value={p.progress} tone="blue" />
@@ -89,10 +91,10 @@ export default function Projects() {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Badge tone={toneFor(p.complianceStatus)}>{p.complianceStatus}</Badge>
-                <span className="text-xs text-silver-500">Last upload: {p.lastUpload}</span>
+                <span className="text-xs text-silver-500">{t('common.lastUpload')}: {p.lastUpload}</span>
               </div>
               <Link to="/app/analysis" className="strux-btn-primary px-3.5 py-2 text-xs">
-                Open Project <IconArrowRight className="h-3.5 w-3.5" />
+                {t('common.openProject')} <IconArrowRight className="h-3.5 w-3.5 rtl:-scale-x-100" />
               </Link>
             </div>
           </Card>

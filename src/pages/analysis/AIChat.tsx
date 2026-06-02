@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Card, Badge } from '../../components/ui/primitives'
 import { IconSend, IconSparkle, IconBolt } from '../../components/ui/Icons'
 import { StruxGlyph } from '../../components/Brand'
+import { useI18n } from '../../i18n'
 import { chatSuggestions } from '../../data/mock'
 
 interface Msg {
@@ -27,12 +28,8 @@ function answerFor(q: string): string {
 }
 
 export default function AIChat() {
-  const [messages, setMessages] = useState<Msg[]>([
-    {
-      role: 'ai',
-      text: "Hello — I'm the STRUX Engineering AI. I've analysed the Riyadh Mixed-Use Tower model. Ask me anything about its risks, clashes, compliance or quantities.",
-    },
-  ])
+  const { t } = useI18n()
+  const [messages, setMessages] = useState<Msg[]>([{ role: 'ai', text: t('chat.greeting') }])
   const [input, setInput] = useState('')
   const endRef = useRef<HTMLDivElement>(null)
 
@@ -59,9 +56,9 @@ export default function AIChat() {
       {/* Suggested prompts */}
       <Card className="lg:col-span-1">
         <h3 className="flex items-center gap-2 text-sm font-semibold text-silver-100">
-          <IconBolt className="h-4 w-4 text-electric-300" /> Suggested Questions
+          <IconBolt className="h-4 w-4 text-electric-300" /> {t('chat.suggested')}
         </h3>
-        <p className="mt-0.5 text-xs text-silver-400">Tap to ask the STRUX AI</p>
+        <p className="mt-0.5 text-xs text-silver-400">{t('chat.tap')}</p>
         <div className="mt-3 space-y-2">
           {chatSuggestions.map((s) => (
             <button
@@ -81,9 +78,9 @@ export default function AIChat() {
           <StruxGlyph size={32} />
           <div>
             <div className="flex items-center gap-2 text-sm font-semibold text-silver-100">
-              STRUX Engineering AI <Badge tone="green">Online</Badge>
+              {t('chat.title')} <Badge tone="green">{t('chat.online')}</Badge>
             </div>
-            <div className="text-xs text-silver-400">Context: Riyadh Mixed-Use Tower · v12</div>
+            <div className="text-xs text-silver-400">{t('chat.context')}</div>
           </div>
         </div>
 
@@ -133,7 +130,7 @@ export default function AIChat() {
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask about risks, clashes, compliance, quantities…"
+            placeholder={t('chat.placeholder')}
             className="strux-input"
           />
           <button type="submit" className="strux-btn-primary px-3.5">

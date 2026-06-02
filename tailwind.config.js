@@ -29,6 +29,7 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
+        arabic: ['Tajawal', 'Inter', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         glow: '0 0 0 1px rgba(47,107,255,0.25), 0 8px 30px -8px rgba(47,107,255,0.45)',

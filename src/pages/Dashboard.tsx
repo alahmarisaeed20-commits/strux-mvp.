@@ -13,6 +13,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts'
+import { useI18n } from '../i18n'
 import { Card, Badge, ProgressBar, ScoreRing, toneFor } from '../components/ui/primitives'
 import {
   IconAnalysis,
@@ -76,38 +77,36 @@ function Kpi({
 }
 
 export default function Dashboard() {
+  const { t } = useI18n()
   return (
     <div className="space-y-6">
       {/* Hero strip */}
       <div className="strux-card flex flex-col gap-4 overflow-hidden p-6 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <div className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-electric-500/30 bg-electric-500/10 px-2.5 py-0.5 text-xs font-semibold text-electric-300">
-            <IconBolt className="h-3.5 w-3.5" /> Portfolio Intelligence · Live
+            <IconBolt className="h-3.5 w-3.5" /> {t('dash.portfolioLive')}
           </div>
           <h2 className="text-xl font-bold tracking-tight text-silver-100">
-            Good morning, Saeed — your portfolio is{' '}
-            <span className="text-emerald-300">healthy</span>.
+            {t('dash.greeting')} <span className="text-emerald-300">{t('dash.healthy')}</span>.
           </h2>
-          <p className="mt-1 text-sm text-silver-400">
-            18 active projects · 38 high-risk issues need attention this week.
-          </p>
+          <p className="mt-1 text-sm text-silver-400">{t('dash.portfolioSub')}</p>
         </div>
         <div className="flex items-center gap-6">
-          <ScoreRing value={k.bimHealthScore} label="BIM Health" />
-          <ScoreRing value={k.complianceScore} label="Compliance" />
+          <ScoreRing value={k.bimHealthScore} label={t('dash.bimHealth')} />
+          <ScoreRing value={k.complianceScore} label={t('dash.compliance')} />
         </div>
       </div>
 
       {/* KPI grid */}
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-        <Kpi label="Total Issues" value={k.totalIssues.toString()} sub="Across all projects" icon={IconAnalysis} />
-        <Kpi label="High Risk Issues" value={k.highRiskIssues.toString()} sub="Need attention" icon={IconClash} tone="red" />
-        <Kpi label="Open RFIs" value={k.openRfis.toString()} sub="Awaiting response" icon={IconRfi} tone="amber" />
-        <Kpi label="Active Projects" value={k.projects.toString()} sub="6 disciplines" icon={IconProjects} tone="blue" />
-        <Kpi label="Reports Generated" value={k.reportsGenerated.toLocaleString()} sub="Lifetime" icon={IconReport} tone="green" />
-        <Kpi label="BIM Health Score" value={`${k.bimHealthScore}%`} sub="Portfolio average" icon={IconBolt} tone="green" />
-        <Kpi label="Compliance Score" value={`${k.complianceScore}%`} sub="Saudi regulations" icon={IconShield} tone="blue" />
-        <Kpi label="High-Risk Clashes" value="14" sub="Critical priority" icon={IconClash} tone="red" />
+        <Kpi label={t('kpi.totalIssues')} value={k.totalIssues.toString()} icon={IconAnalysis} />
+        <Kpi label={t('kpi.highRisk')} value={k.highRiskIssues.toString()} icon={IconClash} tone="red" />
+        <Kpi label={t('kpi.openRfis')} value={k.openRfis.toString()} icon={IconRfi} tone="amber" />
+        <Kpi label={t('kpi.projects')} value={k.projects.toString()} icon={IconProjects} tone="blue" />
+        <Kpi label={t('kpi.reports')} value={k.reportsGenerated.toLocaleString()} icon={IconReport} tone="green" />
+        <Kpi label={t('kpi.bimScore')} value={`${k.bimHealthScore}%`} icon={IconBolt} tone="green" />
+        <Kpi label={t('kpi.complianceScore')} value={`${k.complianceScore}%`} icon={IconShield} tone="blue" />
+        <Kpi label={t('kpi.highClashes')} value="14" icon={IconClash} tone="red" />
       </div>
 
       {/* Charts row */}
@@ -115,8 +114,8 @@ export default function Dashboard() {
         <Card className="lg:col-span-2">
           <div className="mb-4 flex items-center justify-between">
             <div>
-              <h3 className="text-sm font-semibold text-silver-100">Issue Resolution &amp; Health Trend</h3>
-              <p className="text-xs text-silver-400">Detected vs resolved over the last 8 weeks</p>
+              <h3 className="text-sm font-semibold text-silver-100">{t('dash.trend')}</h3>
+              <p className="text-xs text-silver-400">{t('dash.trendSub')}</p>
             </div>
             <Badge tone="green">Health ↑ 11 pts</Badge>
           </div>
@@ -143,8 +142,8 @@ export default function Dashboard() {
         </Card>
 
         <Card>
-          <h3 className="mb-1 text-sm font-semibold text-silver-100">Issues by Discipline</h3>
-          <p className="mb-2 text-xs text-silver-400">Distribution across 247 issues</p>
+          <h3 className="mb-1 text-sm font-semibold text-silver-100">{t('dash.byDiscipline')}</h3>
+          <p className="mb-2 text-xs text-silver-400">247 {t('common.issues')}</p>
           <ResponsiveContainer width="100%" height={180}>
             <PieChart>
               <Pie
@@ -177,8 +176,8 @@ export default function Dashboard() {
       {/* Severity + Projects */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         <Card>
-          <h3 className="mb-1 text-sm font-semibold text-silver-100">Severity Breakdown</h3>
-          <p className="mb-3 text-xs text-silver-400">Open issues by severity</p>
+          <h3 className="mb-1 text-sm font-semibold text-silver-100">{t('dash.severity')}</h3>
+          <p className="mb-3 text-xs text-silver-400">{t('common.severity')}</p>
           <ResponsiveContainer width="100%" height={200}>
             <BarChart data={severityBreakdown} margin={{ left: -20, right: 6 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
@@ -196,9 +195,9 @@ export default function Dashboard() {
 
         <Card className="lg:col-span-2">
           <div className="mb-3 flex items-center justify-between">
-            <h3 className="text-sm font-semibold text-silver-100">Project Status</h3>
+            <h3 className="text-sm font-semibold text-silver-100">{t('dash.projectStatus')}</h3>
             <Link to="/app/projects" className="inline-flex items-center gap-1 text-xs font-semibold text-electric-300 hover:text-electric-200">
-              View all <IconArrowRight className="h-3.5 w-3.5" />
+              {t('common.viewAll')} <IconArrowRight className="h-3.5 w-3.5 rtl:-scale-x-100" />
             </Link>
           </div>
           <div className="space-y-3">
@@ -212,7 +211,7 @@ export default function Dashboard() {
                   <div className="flex items-center gap-2">
                     <span className="truncate text-sm font-semibold text-silver-100">{p.name}</span>
                     <Badge tone={toneFor(p.riskLevel)} className="hidden sm:inline-flex">
-                      {p.riskLevel} risk
+                      {p.riskLevel} {t('common.risk')}
                     </Badge>
                   </div>
                   <div className="mt-1.5 flex items-center gap-3">
@@ -222,11 +221,11 @@ export default function Dashboard() {
                 </div>
                 <div className="hidden text-right sm:block">
                   <div className="text-sm font-bold text-silver-100">{p.bimScore}%</div>
-                  <div className="text-[11px] text-silver-500">BIM score</div>
+                  <div className="text-[11px] text-silver-500">{t('common.bimScore')}</div>
                 </div>
                 <div className="text-right">
                   <div className="text-sm font-bold text-silver-100">{p.issues}</div>
-                  <div className="text-[11px] text-silver-500">issues</div>
+                  <div className="text-[11px] text-silver-500">{t('common.issues')}</div>
                 </div>
               </Link>
             ))}

@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard'
 import Projects from './pages/Projects'
 import Upload from './pages/Upload'
 import Analysis from './pages/Analysis'
+import Viewer from './pages/Viewer'
 import Settings from './pages/Settings'
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="projects" element={<Projects />} />
         <Route path="upload" element={<Upload />} />
         <Route path="analysis" element={<Analysis />} />
+        <Route path="viewer" element={<Viewer />} />
         <Route path="settings" element={<Settings />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />

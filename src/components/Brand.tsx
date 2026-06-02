@@ -1,3 +1,5 @@
+import { useI18n } from '../i18n'
+
 // STRUX wordmark + glyph, reused on the login screen and sidebar.
 export function StruxGlyph({ size = 32 }: { size?: number }) {
   return (
@@ -10,6 +12,7 @@ export function StruxGlyph({ size = 32 }: { size?: number }) {
 }
 
 export function Brand({ compact = false }: { compact?: boolean }) {
+  const { t } = useI18n()
   return (
     <div className="flex items-center gap-2.5">
       <StruxGlyph size={32} />
@@ -17,7 +20,7 @@ export function Brand({ compact = false }: { compact?: boolean }) {
         <div className="leading-tight">
           <div className="text-base font-extrabold tracking-tight text-silver-100">STRUX</div>
           <div className="text-[10px] font-medium uppercase tracking-[0.18em] text-electric-300">
-            Engineering Intelligence
+            {t('brand.tagline')}
           </div>
         </div>
       )}

@@ -1,11 +1,20 @@
 import { useState } from 'react'
 import { Card, Badge, toneFor } from '../components/ui/primitives'
 import { IconCheck, IconShield, IconBuilding, IconSettings, IconBolt } from '../components/ui/Icons'
+import { useI18n } from '../i18n'
 import { teamMembers, roleMatrix, integrations, plans } from '../data/mock'
 
-const sections = ['Company', 'Users & Roles', 'Permissions', 'Integrations', 'Security', 'Subscription']
+const sections = [
+  { id: 'Company', key: 'set.company' },
+  { id: 'Users', key: 'set.users' },
+  { id: 'Permissions', key: 'set.permissions' },
+  { id: 'Integrations', key: 'set.integrations' },
+  { id: 'Security', key: 'set.security' },
+  { id: 'Subscription', key: 'set.subscription' },
+]
 
 export default function Settings() {
+  const { t } = useI18n()
   const [tab, setTab] = useState('Company')
 
   return (
@@ -13,19 +22,19 @@ export default function Settings() {
       <div className="strux-card flex flex-wrap gap-1 p-1.5">
         {sections.map((s) => (
           <button
-            key={s}
-            onClick={() => setTab(s)}
+            key={s.id}
+            onClick={() => setTab(s.id)}
             className={`rounded-lg px-3.5 py-2 text-sm font-medium transition ${
-              tab === s ? 'bg-electric-500 text-white shadow-glow' : 'text-silver-400 hover:bg-white/5 hover:text-silver-100'
+              tab === s.id ? 'bg-electric-500 text-white shadow-glow' : 'text-silver-400 hover:bg-white/5 hover:text-silver-100'
             }`}
           >
-            {s}
+            {t(s.key)}
           </button>
         ))}
       </div>
 
       {tab === 'Company' && <CompanyProfile />}
-      {tab === 'Users & Roles' && <Users />}
+      {tab === 'Users' && <Users />}
       {tab === 'Permissions' && <Permissions />}
       {tab === 'Integrations' && <Integrations />}
       {tab === 'Security' && <Security />}
@@ -35,6 +44,7 @@ export default function Settings() {
 }
 
 function CompanyProfile() {
+  const { t } = useI18n()
   const fields = [
     { label: 'Company Name', value: 'STRUX Engineering Intelligence' },
     { label: 'CR Number', value: '1010-XXXXXX' },
@@ -46,7 +56,7 @@ function CompanyProfile() {
   return (
     <Card>
       <h3 className="flex items-center gap-2 text-sm font-semibold text-silver-100">
-        <IconBuilding className="h-4 w-4 text-electric-300" /> Company Profile
+        <IconBuilding className="h-4 w-4 text-electric-300" /> {t('set.companyProfile')}
       </h3>
       <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
         {fields.map((f) => (
@@ -59,31 +69,32 @@ function CompanyProfile() {
         ))}
       </div>
       <div className="mt-4 flex gap-2">
-        <button className="strux-btn-primary px-4 py-2 text-sm">Save Changes</button>
-        <button className="strux-btn-ghost px-4 py-2 text-sm">Cancel</button>
+        <button className="strux-btn-primary px-4 py-2 text-sm">{t('common.save')}</button>
+        <button className="strux-btn-ghost px-4 py-2 text-sm">{t('common.cancel')}</button>
       </div>
     </Card>
   )
 }
 
 function Users() {
+  const { t } = useI18n()
   return (
     <Card className="p-0">
       <div className="flex items-center justify-between border-b border-white/5 p-5">
         <div>
-          <h3 className="text-sm font-semibold text-silver-100">Team Members</h3>
-          <p className="text-xs text-silver-400">Manage who can access your STRUX workspace</p>
+          <h3 className="text-sm font-semibold text-silver-100">{t('set.team')}</h3>
+          <p className="text-xs text-silver-400">{t('set.teamSub')}</p>
         </div>
-        <button className="strux-btn-primary px-3.5 py-2 text-xs">Invite User</button>
+        <button className="strux-btn-primary px-3.5 py-2 text-xs">{t('set.invite')}</button>
       </div>
       <div className="overflow-x-auto">
-        <table className="w-full min-w-[560px] text-left text-sm">
+        <table className="w-full min-w-[560px] text-start text-sm">
           <thead className="text-xs uppercase tracking-wide text-silver-500">
             <tr className="border-b border-white/5">
-              <th className="px-5 py-3 font-semibold">Name</th>
-              <th className="px-5 py-3 font-semibold">Email</th>
-              <th className="px-5 py-3 font-semibold">Role</th>
-              <th className="px-5 py-3 font-semibold">Status</th>
+              <th className="px-5 py-3 font-semibold">{t('set.name')}</th>
+              <th className="px-5 py-3 font-semibold">{t('set.email')}</th>
+              <th className="px-5 py-3 font-semibold">{t('set.roleCol')}</th>
+              <th className="px-5 py-3 font-semibold">{t('common.status')}</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-white/5">
@@ -107,6 +118,7 @@ function Users() {
 }
 
 function Permissions() {
+  const { t } = useI18n()
   const cols = [
     { key: 'upload', label: 'Upload' },
     { key: 'analyze', label: 'Analyze' },
@@ -117,14 +129,14 @@ function Permissions() {
   return (
     <Card className="p-0">
       <div className="border-b border-white/5 p-5">
-        <h3 className="text-sm font-semibold text-silver-100">Project Permissions Matrix</h3>
-        <p className="text-xs text-silver-400">Role-based access control across STRUX modules</p>
+        <h3 className="text-sm font-semibold text-silver-100">{t('set.matrix')}</h3>
+        <p className="text-xs text-silver-400">{t('set.matrixSub')}</p>
       </div>
       <div className="overflow-x-auto">
-        <table className="w-full min-w-[560px] text-left text-sm">
+        <table className="w-full min-w-[560px] text-start text-sm">
           <thead className="text-xs uppercase tracking-wide text-silver-500">
             <tr className="border-b border-white/5">
-              <th className="px-5 py-3 font-semibold">Role</th>
+              <th className="px-5 py-3 font-semibold">{t('set.roleCol')}</th>
               {cols.map((c) => (
                 <th key={c.key} className="px-5 py-3 text-center font-semibold">
                   {c.label}
@@ -157,19 +169,20 @@ function Permissions() {
 }
 
 function Integrations() {
+  const { t } = useI18n()
   return (
     <div className="space-y-4">
       <Card>
         <h3 className="flex items-center gap-2 text-sm font-semibold text-silver-100">
-          <IconSettings className="h-4 w-4 text-electric-300" /> API Integration
+          <IconSettings className="h-4 w-4 text-electric-300" /> {t('set.apiTitle')}
         </h3>
-        <p className="mt-0.5 text-xs text-silver-400">Connect STRUX to your existing construction tech stack.</p>
+        <p className="mt-0.5 text-xs text-silver-400">{t('set.apiSub')}</p>
         <div className="mt-3 flex flex-col gap-2 rounded-lg border border-white/5 bg-navy-950/40 p-3 sm:flex-row sm:items-center">
-          <code className="flex-1 truncate rounded bg-black/30 px-3 py-2 font-mono text-xs text-electric-300">
+          <code className="flex-1 truncate rounded bg-black/30 px-3 py-2 font-mono text-xs text-electric-300" dir="ltr">
             sk_live_strux_••••••••••••••••••••3f9a
           </code>
-          <button className="strux-btn-ghost px-3.5 py-2 text-xs">Regenerate Key</button>
-          <button className="strux-btn-ghost px-3.5 py-2 text-xs">View Docs</button>
+          <button className="strux-btn-ghost px-3.5 py-2 text-xs">{t('set.regenerate')}</button>
+          <button className="strux-btn-ghost px-3.5 py-2 text-xs">{t('set.docs')}</button>
         </div>
       </Card>
 
@@ -192,7 +205,7 @@ function Integrations() {
                   : 'strux-btn-ghost px-3 py-1.5 text-xs'
               }
             >
-              {i.connected ? 'Connected' : 'Connect'}
+              {i.connected ? t('set.connected') : t('set.connect')}
             </button>
           </Card>
         ))}
@@ -202,6 +215,7 @@ function Integrations() {
 }
 
 function Security() {
+  const { t } = useI18n()
   return (
     <div className="space-y-4">
       <Card className="border-electric-500/20 bg-gradient-to-br from-electric-500/10 to-transparent">
@@ -210,11 +224,8 @@ function Security() {
             <IconShield className="h-6 w-6" />
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-silver-100">🇸🇦 Saudi Data Residency &amp; Security</h3>
-            <p className="mt-1 text-sm leading-relaxed text-silver-300">
-              All project models, BOQs and reports are hosted within Saudi Arabia in compliance with the PDPL
-              (Personal Data Protection Law) and SDAIA data governance guidelines. Data never leaves the Kingdom.
-            </p>
+            <h3 className="text-sm font-semibold text-silver-100">🇸🇦 {t('set.securityTitle')}</h3>
+            <p className="mt-1 text-sm leading-relaxed text-silver-300">{t('set.securityDesc')}</p>
           </div>
         </div>
       </Card>
@@ -242,6 +253,7 @@ function Security() {
 }
 
 function Subscription() {
+  const { t } = useI18n()
   return (
     <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
       {plans.map((p) => (
@@ -251,7 +263,7 @@ function Subscription() {
         >
           <div className="flex items-center justify-between">
             <h3 className="text-base font-bold text-silver-100">{p.name}</h3>
-            {p.current && <Badge tone="blue">Current Plan</Badge>}
+            {p.current && <Badge tone="blue">{t('set.currentPlan')}</Badge>}
           </div>
           <div className="mt-2 flex items-baseline gap-1">
             <span className="text-2xl font-extrabold text-silver-100">{p.price}</span>
@@ -271,7 +283,7 @@ function Subscription() {
             className={`mt-5 w-full ${p.current ? 'strux-btn-ghost' : 'strux-btn-primary'}`}
             disabled={p.current}
           >
-            {p.current ? 'Active' : p.name === 'Government' ? 'Contact Sales' : 'Upgrade'}
+            {p.current ? t('set.active') : p.name === 'Government' ? t('set.contactSales') : t('set.upgrade')}
           </button>
         </Card>
       ))}

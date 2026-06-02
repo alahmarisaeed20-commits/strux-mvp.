@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { Card, Badge, toneFor } from '../../components/ui/primitives'
 import { IconRfi, IconBolt, IconSparkle, IconDoc } from '../../components/ui/Icons'
+import { useI18n } from '../../i18n'
 import { rfis as seedRfis } from '../../data/mock'
 
 export default function RFIGen() {
+  const { t } = useI18n()
   const [rfis, setRfis] = useState(seedRfis)
   const [generating, setGenerating] = useState(false)
   const [selected, setSelected] = useState(seedRfis[0].id)
@@ -40,20 +42,18 @@ export default function RFIGen() {
             <IconRfi className="h-6 w-6" />
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-silver-100">AI RFI Generator</h3>
-            <p className="text-xs text-silver-400">
-              Auto-drafts construction RFIs from clashes, compliance gaps and quantity variances.
-            </p>
+            <h3 className="text-sm font-semibold text-silver-100">{t('rfi.title')}</h3>
+            <p className="text-xs text-silver-400">{t('rfi.sub')}</p>
           </div>
         </div>
         <button onClick={generate} disabled={generating} className="strux-btn-primary shrink-0">
           {generating ? (
             <>
-              <IconSparkle className="h-4 w-4 animate-spin" /> Drafting…
+              <IconSparkle className="h-4 w-4 animate-spin" /> {t('rfi.drafting')}
             </>
           ) : (
             <>
-              <IconBolt className="h-4 w-4" /> Generate RFI from Issues
+              <IconBolt className="h-4 w-4" /> {t('rfi.generate')}
             </>
           )}
         </button>
