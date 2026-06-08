@@ -1,5 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="sx_blue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3f7bff"/>
+      <stop offset="100%" stop-color="#1f3f96"/>
+    </linearGradient>
+    <linearGradient id="sx_dark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#39435b"/>
+      <stop offset="100%" stop-color="#1a2030"/>
+    </linearGradient>
+  </defs>
   <rect width="64" height="64" rx="14" fill="#0a1024"/>
-  <path d="M20 16h18a8 8 0 0 1 0 16h-6l14 16h-9L24 34v14h-7V16h3z" fill="#2f6bff"/>
-  <circle cx="44" cy="22" r="3" fill="#7aa6ff"/>
+  <!-- accent triangles -->
+  <polygon points="8,30 8,40 14,35" fill="#9aa6c4"/>
+  <polygon points="56,24 56,34 50,29" fill="#4a5570"/>
+  <!-- hexagon halves split along UR->LL -->
+  <polygon points="16,21.5 32,12 48,21.5 16,42.5" fill="url(#sx_blue)"/>
+  <polygon points="48,21.5 48,42.5 32,52 16,42.5" fill="url(#sx_dark)"/>
+  <!-- negative-space S -->
+  <path d="M43 22 L26 22 L26 29.5 L38 33 L38 42 L21 42" fill="none" stroke="#0a1024" stroke-width="5.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M43 22 L26 22 L26 29.5 L38 33 L38 42 L21 42" fill="none" stroke="#eef2fb" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
 </svg>

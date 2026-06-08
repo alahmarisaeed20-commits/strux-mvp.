@@ -2,10 +2,18 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Brand, StruxGlyph } from '../components/Brand'
 import { IconArrowRight, IconShield, IconCube, IconBolt } from '../components/ui/Icons'
-import { userRoles } from '../data/mock'
+import { useI18n } from '../i18n'
+
+const roleOptions = [
+  { id: 'Contractor', key: 'role.contractor' },
+  { id: 'Consultant', key: 'role.consultant' },
+  { id: 'BIM Manager', key: 'role.bim' },
+  { id: 'Owner', key: 'role.owner' },
+]
 
 export default function Login() {
   const navigate = useNavigate()
+  const { t, toggle, lang } = useI18n()
   const [role, setRole] = useState('BIM Manager')
   const [email, setEmail] = useState('saeed@strux.sa')
 
@@ -28,71 +36,76 @@ export default function Login() {
 
           <div className="max-w-md">
             <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-electric-500/30 bg-electric-500/10 px-3 py-1 text-xs font-semibold text-electric-300">
-              <IconBolt className="h-3.5 w-3.5" /> AI Engineering Intelligence Platform
+              <IconBolt className="h-3.5 w-3.5" /> {t('brand.platform')}
             </div>
             <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-silver-100 xl:text-5xl">
-              The AI Operating Layer for{' '}
+              {t('login.heroTitle1')}{' '}
               <span className="bg-gradient-to-r from-electric-300 to-electric-500 bg-clip-text text-transparent">
-                Engineering &amp; Construction
+                {t('login.heroTitle2')}
               </span>
             </h1>
-            <p className="mt-5 text-base leading-relaxed text-silver-400">
-              STRUX adds an intelligence layer on top of your BIM files, IFC/Revit models, BOQs and Saudi
-              compliance requirements — without replacing Autodesk, Revit or Navisworks.
-            </p>
+            <p className="mt-5 text-base leading-relaxed text-silver-400">{t('login.heroDesc')}</p>
 
             <div className="mt-8 grid grid-cols-3 gap-3">
               {[
-                { icon: IconCube, label: 'BIM QA/QC' },
-                { icon: IconBolt, label: 'Clash Intelligence' },
-                { icon: IconShield, label: 'Saudi Compliance' },
+                { icon: IconCube, key: 'feat.qaqc' },
+                { icon: IconBolt, key: 'feat.clash' },
+                { icon: IconShield, key: 'feat.compliance' },
               ].map((f) => (
-                <div key={f.label} className="strux-card flex flex-col items-start gap-2 p-3">
+                <div key={f.key} className="strux-card flex flex-col items-start gap-2 p-3">
                   <f.icon className="h-5 w-5 text-electric-300" />
-                  <span className="text-xs font-medium text-silver-300">{f.label}</span>
+                  <span className="text-xs font-medium text-silver-300">{t(f.key)}</span>
                 </div>
               ))}
             </div>
           </div>
 
           <div className="flex items-center gap-6 text-xs text-silver-500">
-            <span>🇸🇦 KSA Data Residency</span>
-            <span>ISO 19650 Aligned</span>
-            <span>Enterprise SSO Ready</span>
+            <span>🇸🇦 {t('login.residency')}</span>
+            <span>{t('login.iso')}</span>
+            <span>{t('login.sso')}</span>
           </div>
         </div>
 
         {/* Right — login card */}
         <div className="flex items-center justify-center p-6 sm:p-10">
           <form onSubmit={submit} className="strux-card w-full max-w-md p-7 sm:p-8">
-            <div className="mb-6 flex items-center gap-3 lg:hidden">
-              <StruxGlyph />
-              <span className="text-lg font-extrabold tracking-tight">STRUX</span>
+            <div className="mb-6 flex items-center justify-between">
+              <div className="flex items-center gap-3 lg:hidden">
+                <StruxGlyph />
+                <span className="text-lg font-extrabold tracking-tight">STRUX</span>
+              </div>
+              <button
+                type="button"
+                onClick={toggle}
+                className="ms-auto rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-bold text-silver-200 hover:text-white"
+                title={lang === 'ar' ? 'Switch to English' : 'التبديل إلى العربية'}
+              >
+                {t('lang.toggle')}
+              </button>
             </div>
 
-            <h2 className="text-xl font-bold tracking-tight text-silver-100">Sign in to your workspace</h2>
-            <p className="mt-1 text-sm text-silver-400">
-              Welcome back. Select your role to continue to the demo.
-            </p>
+            <h2 className="text-xl font-bold tracking-tight text-silver-100">{t('login.signin')}</h2>
+            <p className="mt-1 text-sm text-silver-400">{t('login.welcome')}</p>
 
             <div className="mt-6 space-y-4">
               <div>
                 <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-silver-400">
-                  Sign in as
+                  {t('login.signinAs')}
                 </label>
                 <div className="grid grid-cols-2 gap-2">
-                  {userRoles.map((r) => (
+                  {roleOptions.map((r) => (
                     <button
                       type="button"
-                      key={r}
-                      onClick={() => setRole(r)}
+                      key={r.id}
+                      onClick={() => setRole(r.id)}
                       className={`rounded-lg border px-3 py-2.5 text-sm font-medium transition ${
-                        role === r
+                        role === r.id
                           ? 'border-electric-500 bg-electric-500/15 text-silver-100'
                           : 'border-white/10 bg-white/5 text-silver-400 hover:text-silver-100'
                       }`}
                     >
-                      {r}
+                      {t(r.key)}
                     </button>
                   ))}
                 </div>
@@ -100,7 +113,7 @@ export default function Login() {
 
               <div>
                 <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-silver-400">
-                  Work email
+                  {t('login.email')}
                 </label>
                 <input
                   type="email"
@@ -113,22 +126,20 @@ export default function Login() {
 
               <div>
                 <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-silver-400">
-                  Password
+                  {t('login.password')}
                 </label>
                 <input type="password" defaultValue="demo-access" className="strux-input" placeholder="••••••••" />
               </div>
 
               <button type="submit" className="strux-btn-primary w-full">
-                Enter STRUX Platform <IconArrowRight className="h-4 w-4" />
+                {t('login.enter')} <IconArrowRight className="h-4 w-4 rtl:-scale-x-100" />
               </button>
 
-              <p className="text-center text-xs text-silver-500">
-                Demo prototype · no real authentication. Any credentials continue.
-              </p>
+              <p className="text-center text-xs text-silver-500">{t('login.demoNote')}</p>
             </div>
 
             <div className="mt-6 flex items-center justify-between border-t border-white/5 pt-4 text-xs text-silver-400">
-              <span>Built for Contractors, Consultants, BIM Managers &amp; Owners</span>
+              <span>{t('login.builtFor')}</span>
             </div>
           </form>
         </div>

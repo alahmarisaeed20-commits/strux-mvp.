@@ -1,9 +1,13 @@
 import { useState } from 'react'
 import { Card, Badge, toneFor } from '../../components/ui/primitives'
 import { IconRfi, IconBolt, IconSparkle, IconDoc } from '../../components/ui/Icons'
-import { rfis as seedRfis } from '../../data/mock'
+import { useI18n } from '../../i18n'
+import { rfis as seedRfis, type Rfi } from '../../data/mock'
+import { rfiAr, rfiGeneratedAr, tEnum } from '../../data/ar'
 
 export default function RFIGen() {
+  const { t, lang } = useI18n()
+  const ar = lang === 'ar'
   const [rfis, setRfis] = useState(seedRfis)
   const [generating, setGenerating] = useState(false)
   const [selected, setSelected] = useState(seedRfis[0].id)
@@ -30,7 +34,14 @@ export default function RFIGen() {
     }, 1400)
   }
 
-  const active = rfis.find((r) => r.id === selected) ?? rfis[0]
+  // Localized accessor — uses the Arabic map by id, or the generated-RFI map.
+  function loc(r: Rfi) {
+    if (!ar) return r
+    const a = rfiAr[r.id] ?? (r.id.startsWith('RFI-03') && !rfiAr[r.id] ? rfiGeneratedAr : null)
+    return { ...r, ...(a ?? {}) }
+  }
+
+  const active = loc(rfis.find((r) => r.id === selected) ?? rfis[0])
 
   return (
     <div className="space-y-5">
@@ -40,20 +51,18 @@ export default function RFIGen() {
             <IconRfi className="h-6 w-6" />
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-silver-100">AI RFI Generator</h3>
-            <p className="text-xs text-silver-400">
-              Auto-drafts construction RFIs from clashes, compliance gaps and quantity variances.
-            </p>
+            <h3 className="text-sm font-semibold text-silver-100">{t('rfi.title')}</h3>
+            <p className="text-xs text-silver-400">{t('rfi.sub')}</p>
           </div>
         </div>
         <button onClick={generate} disabled={generating} className="strux-btn-primary shrink-0">
           {generating ? (
             <>
-              <IconSparkle className="h-4 w-4 animate-spin" /> Drafting…
+              <IconSparkle className="h-4 w-4 animate-spin" /> {t('rfi.drafting')}
             </>
           ) : (
             <>
-              <IconBolt className="h-4 w-4" /> Generate RFI from Issues
+              <IconBolt className="h-4 w-4" /> {t('rfi.generate')}
             </>
           )}
         </button>
@@ -62,27 +71,30 @@ export default function RFIGen() {
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         {/* RFI list */}
         <div className="space-y-2 lg:col-span-1">
-          {rfis.map((r) => (
-            <button
-              key={r.id}
-              onClick={() => setSelected(r.id)}
-              className={`w-full rounded-lg border p-3 text-left transition ${
-                selected === r.id
-                  ? 'border-electric-500/50 bg-electric-500/10'
-                  : 'border-white/5 bg-navy-950/40 hover:border-white/15'
-              }`}
-            >
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-xs font-semibold text-electric-300">{r.id}</span>
-                <Badge tone={toneFor(r.status)}>{r.status}</Badge>
-              </div>
-              <p className="mt-1.5 line-clamp-2 text-sm font-medium text-silver-100">{r.subject}</p>
-              <div className="mt-1.5 flex items-center gap-2">
-                <Badge tone={toneFor(r.priority)}>{r.priority}</Badge>
-                <span className="text-[11px] text-silver-500">{r.discipline}</span>
-              </div>
-            </button>
-          ))}
+          {rfis.map((r) => {
+            const lr = loc(r)
+            return (
+              <button
+                key={r.id}
+                onClick={() => setSelected(r.id)}
+                className={`w-full rounded-lg border p-3 text-start transition ${
+                  selected === r.id
+                    ? 'border-electric-500/50 bg-electric-500/10'
+                    : 'border-white/5 bg-navy-950/40 hover:border-white/15'
+                }`}
+              >
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs font-semibold text-electric-300">{r.id}</span>
+                  <Badge tone={toneFor(r.status)}>{tEnum(r.status, ar)}</Badge>
+                </div>
+                <p className="mt-1.5 line-clamp-2 text-sm font-medium text-silver-100">{lr.subject}</p>
+                <div className="mt-1.5 flex items-center gap-2">
+                  <Badge tone={toneFor(r.priority)}>{tEnum(r.priority, ar)}</Badge>
+                  <span className="text-[11px] text-silver-500">{lr.discipline}</span>
+                </div>
+              </button>
+            )
+          })}
         </div>
 
         {/* RFI detail — formatted like a real RFI document */}
@@ -91,29 +103,31 @@ export default function RFIGen() {
             <div className="flex items-center gap-2">
               <IconDoc className="h-5 w-5 text-electric-300" />
               <span className="font-mono text-sm font-semibold text-silver-100">{active.id}</span>
-              <Badge tone={toneFor(active.status)}>{active.status}</Badge>
+              <Badge tone={toneFor(active.status)}>{tEnum(active.status, ar)}</Badge>
             </div>
             <span className="text-xs text-silver-500">{active.date}</span>
           </div>
 
           <dl className="mt-4 space-y-3.5">
-            <Field label="Subject">{active.subject}</Field>
-            <Field label="Question">{active.question}</Field>
+            <Field label={t('rf.subject')}>{active.subject}</Field>
+            <Field label={t('rf.question')}>{active.question}</Field>
             <div className="grid grid-cols-2 gap-4">
-              <Field label="Discipline">{active.discipline}</Field>
-              <Field label="Priority">
-                <Badge tone={toneFor(active.priority)}>{active.priority}</Badge>
+              <Field label={t('common.discipline')}>{active.discipline}</Field>
+              <Field label={t('common.priority')}>
+                <Badge tone={toneFor(active.priority)}>{tEnum(active.priority, ar)}</Badge>
               </Field>
-              <Field label="Suggested Attachment">{active.attachment}</Field>
-              <Field label="Source">{active.source}</Field>
+              <Field label={t('rf.suggestedAtt')}>{active.attachment}</Field>
+              <Field label={t('rf.source')}>{active.source}</Field>
             </div>
-            <Field label="Raised By">{active.raisedBy} · auto-generated</Field>
+            <Field label={t('rf.raisedBy')}>
+              {active.raisedBy} · {t('rf.autogen')}
+            </Field>
           </dl>
 
           <div className="mt-5 flex flex-wrap gap-2 border-t border-white/5 pt-4">
-            <button className="strux-btn-primary px-3.5 py-2 text-xs">Issue RFI</button>
-            <button className="strux-btn-ghost px-3.5 py-2 text-xs">Edit Draft</button>
-            <button className="strux-btn-ghost px-3.5 py-2 text-xs">Export PDF</button>
+            <button className="strux-btn-primary px-3.5 py-2 text-xs">{t('rf.issue')}</button>
+            <button className="strux-btn-ghost px-3.5 py-2 text-xs">{t('rf.edit')}</button>
+            <button className="strux-btn-ghost px-3.5 py-2 text-xs">{t('rf.export')}</button>
           </div>
         </Card>
       </div>
